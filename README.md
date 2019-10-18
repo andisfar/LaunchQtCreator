@@ -1,6 +1,6 @@
 # launchqtcreator README
 
-QtCreator is very useful for looking certain tasks. and I often use code and creator together when working on c++/gui projects
+QtCreator is very useful for certain tasks, and when working on Qt projects, there are things I find Qt Creatro invaluable for. I often use Vislual Studio Code and QtCreator together when working on c++/gui projects
 
 ![Qt Creator Launcher](src/images/demo.gif)
 
