@@ -2,7 +2,7 @@
 
 QtCreator is very useful for looking certain tasks. and I often use code and creator together when working on c++/gui projects
 
-![Qt Assistan Launcher](src/images/demo.gif)
+![Qt Creator Launcher](src/images/demo.gif)
 
 ## Features
 

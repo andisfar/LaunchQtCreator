@@ -31,7 +31,7 @@
 			{
 				"title": "launchqtcreator",
 				"properties": {
-					"launchqtcreator.qtAssistantPath": {
+					"launchqtcreator.qtCreatorPath": {
 						"type": "string",
 						"scope": "resource",
 						"default": "",

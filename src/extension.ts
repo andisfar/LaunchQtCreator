@@ -34,11 +34,10 @@ export function deactivate() { }
 
 export function LaunchQtCreator() {
 	let config = vscode.workspace.getConfiguration('launchqtcreator');
-	let qtcreator = config.qtAssistantPath;
+	let qtcreator = config.qtCreatorPath;
 	if(qtcreator === "")
-	{
-		qtcreator = vscode.window.showInputBox();
-		vscode.window.showInformationMessage(qtcreator);
+	{		
+		vscode.window.showErrorMessage("Define 'launchqtcreator.qtCreatorPath'");
 	}
 	else
 	{		
@@ -49,6 +48,7 @@ export function LaunchQtCreator() {
 			if (err) {
 				console.log('error: ' + err);
 			}
-		});		
+		});	
+		vscode.window.showInformationMessage("launching QtCreator from [" + qtcreator + "]");	
 	}	
 }
