@@ -39,7 +39,7 @@ export async function LaunchQtCreator() : Promise<boolean> {
 	let config = workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
 	let return_value:boolean = false; 
-	if(qtcreator === "")
+	if(qtcreator === "<qt-creator-path>" || qtcreator === "")
 	{		
 		qtcreator = getQtCreatorPath().then(()=>{ 			
 			return_value = true;

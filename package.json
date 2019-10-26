@@ -2,14 +2,16 @@
 	"name": "launchqtcreator",
 	"displayName": "LaunchQtCreator",
 	"description": "Launch QtCreator",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
 		"name": "Oral Shane Curtis (AngryDane)",
 		"email": "andisfar@hotmail.com",
-		"url": "https://github.com/andisfar/"		
+		"url": "https://github.com/andisfar/"
 	},
-	"repository": {"url": "https://github.com/andisfar/LaunchQtCreator"},
+	"repository": {
+		"url": "https://github.com/andisfar/LaunchQtCreator"
+	},
 	"engines": {
 		"vscode": "^1.39.0"
 	},
@@ -17,7 +19,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.launchqtcreator"		
+		"onCommand:extension.launchqtcreator"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -34,7 +36,7 @@
 					"launchqtcreator.qtCreatorPath": {
 						"type": "string",
 						"scope": "resource",
-						"default": "",
+						"default": "<qt-creator-path>",
 						"description": "Enter the path of QtCreator for this machine"
 					}
 				}
@@ -57,5 +59,8 @@
 		"typescript": "^3.3.1",
 		"tslint": "^5.12.1",
 		"vscode-test": "^1.2.0"
+	},
+	"dependencies": {
+		"eslint": "^6.6.0"
 	}
 }
