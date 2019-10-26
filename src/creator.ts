@@ -3,7 +3,8 @@ export async function getQtCreatorPath() {
 	let pathUri = await window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
-		canSelectMany: false, openLabel: 'Select the QtCreator executable'
+		canSelectMany: false, 
+		openLabel: 'Select the QtCreator executable to launch'
 	});
 	if (!pathUri) {
 		return null;
@@ -24,7 +25,7 @@ export async function getQtCreatorPath() {
 	return creatorPath;
 }
 
-export async function doLaunchQtCreator(qtcreator: any) {
+export async function doLaunchQtCreator(qtcreator: string) {
 	const cp = require('child_process');
 	await cp.exec(qtcreator, (err: string, stdout: string) => {
 		if (err) {
