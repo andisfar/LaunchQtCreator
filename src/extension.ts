@@ -16,7 +16,7 @@ export function activate(context: ExtensionContext) {
 		console.log(`Launch QtCreator via ${name}!!!`);
 	};
 	context.subscriptions.push(commands.registerCommand(command, commandHandler));  
-		// Create a statusbar item
+	// Create a statusbar item
 	try 
 	{
 		let item = window.createStatusBarItem(StatusBarAlignment.Right, undefined);
@@ -29,7 +29,7 @@ export function activate(context: ExtensionContext) {
 		console.log('failed to create statusbar item \"Qt Creator\"');			
 		window.showErrorMessage(error);
 	}
-		LaunchQtCreator();
+	LaunchQtCreator();
 }
 
 // this method is called when your extension is deactivated
@@ -60,12 +60,12 @@ export async function LaunchQtCreator() : Promise<boolean> {
 }
 
 async function doLaunchQtCreator(qtcreator: any) {
-		const cp = require('child_process');
+	const cp = require('child_process');
 	await cp.exec(qtcreator, (err: string, stdout: string, stderr: string) => {
 		if (err) { console.log('error: ' + err); }
 		if (stdout) {console.log('stdout: ' + stdout);}	
 	});
-			}
+}
 
  async function getQtCreatorPath() 
  {
@@ -73,7 +73,7 @@ async function doLaunchQtCreator(qtcreator: any) {
 	canSelectFolders: false,
 		canSelectFiles: true,
 		canSelectMany: false, openLabel: 'Select the QtCreator executable'
-		});	
+	});
 	if(!pathUri)
 	{
 		return null;
@@ -91,7 +91,7 @@ async function doLaunchQtCreator(qtcreator: any) {
 		else
 		{
 			window.showErrorMessage("Error launching QtCreator from [" + creatorPath + "]");
-	}	
+		}
 		}).then(undefined, err=>{
 			window.showErrorMessage('unable to set \"launchqtcreator.qtCreatorPath\"');
 		});	
