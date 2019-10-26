@@ -35,23 +35,65 @@ export function activate(context: ExtensionContext) {
 // this method is called when your extension is deactivated
 export function deactivate() { }
 
-export function LaunchQtCreator() {
-	let config = vscode.workspace.getConfiguration('launchqtcreator');
+export async function LaunchQtCreator() : Promise<boolean> {
+	let config = workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
+	let return_value:boolean = false; 
 	if(qtcreator === "")
 	{		
-		vscode.window.showErrorMessage("Define 'launchqtcreator.qtCreatorPath'");
+		qtcreator = getQtCreatorPath().then(()=>{ 			
+			return_value = true;
+		}).then(undefined, err =>{
+			return_value = false;
+		});			
 	}
 	else
 	{		
-		const cp = require('child_process');
-		cp.exec(qtcreator, (err: string, stdout: string, stderr: string) => {
-			console.log('stdout: ' + stdout);
-			console.log('stderr: ' + stderr);
-			if (err) {
-				console.log('error: ' + err);
-			}
-		});	
-		vscode.window.showInformationMessage("launching QtCreator from [" + qtcreator + "]");	
+		await doLaunchQtCreator(qtcreator).then(()=>{
+			window.showInformationMessage("Launching QtCreator from [" + qtcreator + "]");
+			return_value = true;
+		}).then(undefined, err=>{
+			window.showErrorMessage("Error launching QtCreator from [" + qtcreator + "]");
+		});
 	}	
+	return return_value;
+}
+
+async function doLaunchQtCreator(qtcreator: any) {
+		const cp = require('child_process');
+	await cp.exec(qtcreator, (err: string, stdout: string, stderr: string) => {
+		if (err) { console.log('error: ' + err); }
+		if (stdout) {console.log('stdout: ' + stdout);}	
+	});
+			}
+
+ async function getQtCreatorPath() 
+ {
+	let pathUri = await window.showOpenDialog({
+	canSelectFolders: false,
+		canSelectFiles: true,
+		canSelectMany: false, openLabel: 'Select the QtCreator executable'
+		});	
+	if(!pathUri)
+	{
+		return null;
+	}
+
+	let creatorPath = pathUri[0].fsPath;
+
+	const settings = await workspace.getConfiguration('launchqtcreator');		
+	settings.update('qtCreatorPath',creatorPath,ConfigurationTarget.Global).then(()=>{
+		console.log('path from OpenDialog ' + creatorPath);
+		if(doLaunchQtCreator(creatorPath))
+		{
+			window.showInformationMessage("Launching QtCreator from [" + creatorPath + "]");
+		}
+		else
+		{
+			window.showErrorMessage("Error launching QtCreator from [" + creatorPath + "]");
+	}	
+		}).then(undefined, err=>{
+			window.showErrorMessage('unable to set \"launchqtcreator.qtCreatorPath\"');
+		});	
+	return creatorPath;
 }
