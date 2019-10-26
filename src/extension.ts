@@ -4,7 +4,8 @@ import { StatusBarAlignment,
 		 ExtensionContext, 
 		 workspace, 
 		 window, 
-		 commands } from 'vscode';
+		 commands, 
+		 Command} from 'vscode';
 import { getQtCreatorPath, doLaunchQtCreator } from './creator';
 
 // this method is called when your extension is activated
@@ -23,7 +24,7 @@ export function activate(context: ExtensionContext) {
 		item.text = "Qt Creator";
 		item.show();
 		commands.registerCommand("QtCreatorCommand",
-			LaunchQtCreator, this);
+			LaunchQtCreator, function(this:Command, err:any){});
 		item.command = "QtCreatorCommand";
 	} catch (error) {
 		console.log('failed to create statusbar item \"Qt Creator\"');			
