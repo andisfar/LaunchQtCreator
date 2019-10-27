@@ -3,7 +3,7 @@ export async function getQtCreatorPath() {
 	let pathUri = await vscode.window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
-		canSelectMany: false, 
+		canSelectMany: false,
 		openLabel: 'Select the QtCreator executable to launch'
 	});
 	if (!pathUri) {
@@ -29,7 +29,7 @@ export async function getQtDesignerPath() {
 	let pathUri = await vscode.window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
-		canSelectMany: false, 
+		canSelectMany: false,
 		openLabel: 'Select the Qt Designer executable to launch'
 	});
 	if (!pathUri) {
@@ -47,7 +47,7 @@ export async function getQtDesignerPath() {
 
 
 export async function doLaunchQtCreator(qtcreator: string) {
-	const cp = require('child_process');	
+	const cp = require('child_process');
 	await cp.exec(qtcreator + " -color teal -notour -client", (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
@@ -59,8 +59,8 @@ export async function doLaunchQtCreator(qtcreator: string) {
 }
 
 export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri) {
-	const cp = require('child_process');	
-	await cp.exec(qtcreator + " -color teal -notour -client " + qtfile.fsPath, (err: string, stdout: string) => {
+	const cp = require('child_process');
+	await cp.exec(qtcreator + " -color teal -client " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
@@ -71,7 +71,7 @@ export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri)
 }
 
 export async function doLaunchInQtDesigner(qtdesigner: string, qtfile: vscode.Uri) {
-	const cp = require('child_process');	
+	const cp = require('child_process');
 	await cp.exec(qtdesigner + "  " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
