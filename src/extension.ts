@@ -90,6 +90,12 @@ function file_extension(file:string) : string {
 }
 
 export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
+	if(!ValidCreatorFiles(qtfile.fsPath))
+	{
+		let basepath: string = file_extension(qtfile.fsPath);
+		vscode.window.showErrorMessage("Extension doesn't allow: opening " + basepath + " type files in QtCreator");
+		return false;
+	}
 	let config = vscode.workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
 	let return_value:boolean = false; 
