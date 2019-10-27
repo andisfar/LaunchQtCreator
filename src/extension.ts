@@ -108,8 +108,7 @@ export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
 		});			
 	}
 	else
-	{
-		var path = require("path");		
+	{	
 		await doLaunchInQtCreator(qtcreator,qtfile).then(()=>{
 			vscode.window.showInformationMessage("Opening " 
 												  + path.basename(qtfile.fsPath) + 
@@ -122,6 +121,7 @@ export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
 		});
 	}	
 	return return_value;
+
 }
 
 export async function LaunchInQtDesigner(qtfile:vscode.Uri) : Promise<boolean> {
@@ -143,8 +143,7 @@ export async function LaunchInQtDesigner(qtfile:vscode.Uri) : Promise<boolean> {
 		});			
 	}
 	else
-	{
-		var path = require("path");		
+	{		
 		await doLaunchInQtDesigner(qtdesigner,qtfile).then(()=>{
 			vscode.window.showInformationMessage("Opening " 
 												  + path.basename(qtfile.fsPath) + 
