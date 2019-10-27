@@ -48,7 +48,7 @@ export async function getQtDesignerPath() {
 
 export async function doLaunchQtCreator(qtcreator: string) {
 	const cp = require('child_process');
-	await cp.exec(qtcreator + " -color teal -notour -client", (err: string, stdout: string) => {
+	await cp.exec(qtcreator + " -color teal -client", (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
