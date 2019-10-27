@@ -11,6 +11,15 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 - if the path to QtCreator is empty then the user is prompted to
   supply the path via a file open dialog
 
+- if the path to Qt Designer is empty then the user is prompted to
+  supply the path via a file open dialog
+
+- ui files can be opended directly in QtCreator or Qt Designer (dealers choice)
+
+- *.pro, CMakeLists.txt project files can be opened in QtCreator
+
+- *.qrc files can be opend in QtCreator
+
 ## Requirements
 
 - Visual Studio Code
@@ -42,6 +51,14 @@ Initial release - added demo.gif
   happending when the extension is being used
 
 The extension now will prompt for a path to the QtCreator executable with a FileOpen dialog
+
+### 0.0.3
+
+- added command to 'open in' for QtCreator: *.pro, *.ui, *.qrc, CMakeLists.txt files only
+- added command to 'open in' for Qt Designer: *.ui files only
+- commands are available on the selected file in the explorer window context menu
+- commands are available on the open text editor window context menu
+- commands are available on the open text editor title context menu
 
 -----------------------------------------------------------------------------------------------------------
 

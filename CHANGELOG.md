@@ -19,3 +19,12 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 - updated the extension to use async functions and added some 
   'exception' handling to help discover where failuers mught be
   happending when the extension is being used
+
+## [0.0.3]
+
+- added command to 'open in' for QtCreator: *.pro, *.ui, *.qrc, CMakeLists.txt files only
+- added command to 'open in' for Qt Designer: *.ui files only
+- commands are available on the selected file in the explorer window context menu
+- commands are available on the open text editor window context menu
+- commands are available on the open text editor title context menu
+
