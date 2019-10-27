@@ -1,9 +1,10 @@
 {
 	"name": "launchqtcreator",
-	"displayName": "LaunchQtCreator",
-	"description": "Launch QtCreator",
-	"icon":"resources/qt.png",
+	"displayName": "Launch Qt Creator",
+	"description": "Launch Qt Creator",
+	"icon": "resources/qt.png",
 	"version": "0.0.5",
+	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
 		"name": "Oral Shane Curtis (AngryDane)",
@@ -32,33 +33,32 @@
 		"menus": {
 			"explorer/context": [
 				{
-      				"command": "launchqtcreator.openinqtcreator",
-				  	"group": "navigation"
+					"command": "launchqtcreator.openinqtcreator",
+					"group": "navigation"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"navigation"
+					"group": "navigation"
 				}
 			],
 			"editor/title/context": [
 				{
-					"when": "",
 					"command": "launchqtcreator.openinqtcreator",
-					"group":	"0"
+					"group": "0"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"0"
+					"group": "0"
 				}
 			],
 			"editor/context": [
 				{
 					"command": "launchqtcreator.openinqtcreator",
-					"group":	"0"
+					"group": "0"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"0"
+					"group": "0"
 				}
 			]
 		},
@@ -86,7 +86,7 @@
 						"default": "<qt-creator-path>",
 						"description": "Enter the path of QtCreator for this machine"
 					},
-					"launchqtcreator.qtDesignerPath":{
+					"launchqtcreator.qtDesignerPath": {
 						"type": "string",
 						"scope": "resource",
 						"default": "<qt-designer-path>",
@@ -105,15 +105,17 @@
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
+		"@types/node": "^10.17.0",
 		"@types/vscode": "^1.39.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
+		"glob": "^7.1.5",
+		"mocha": "^6.2.2",
 		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
 		"vscode-test": "^1.2.0"
 	},
 	"dependencies": {
-		"eslint": "^6.6.0"
+		"es6": "0.0.7",
+		"eslint": "^6.6.0",
+		"vsce": "^1.68.0"
 	}
 }
