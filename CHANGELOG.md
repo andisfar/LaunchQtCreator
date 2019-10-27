@@ -28,3 +28,6 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 - commands are available on the open text editor window context menu
 - commands are available on the open text editor title context menu
 
+## [0.0.4]
+
+- removed -notour from LaunchQtCreator due to lack of support for this flag on linux

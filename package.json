@@ -3,7 +3,7 @@
 	"displayName": "LaunchQtCreator",
 	"description": "Launch QtCreator",
 	"icon":"resources/qt.png",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
 		"name": "Oral Shane Curtis (AngryDane)",
@@ -22,7 +22,7 @@
 	"activationEvents": [
 		"onCommand:launchqtcreator.launchqtcreator",
 		"onCommand:launchqtcreator.openinqtcreator",
-		"onCommand:launchqtcreator.openinqtdesigner",		
+		"onCommand:launchqtcreator.openinqtdesigner",
 		"workspaceContains:*.pro",
 		"workspaceContains:CMakeLists.txt",
 		"workspaceContains:*.ui"
@@ -31,34 +31,34 @@
 	"contributes": {
 		"menus": {
 			"explorer/context": [
-				{					
+				{
       				"command": "launchqtcreator.openinqtcreator",
 				  	"group": "navigation"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"navigation"	
+					"group":	"navigation"
 				}
 			],
 			"editor/title/context": [
 				{
 					"when": "",
 					"command": "launchqtcreator.openinqtcreator",
-					"group":	"0"	
+					"group":	"0"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"0"	
+					"group":	"0"
 				}
 			],
 			"editor/context": [
 				{
 					"command": "launchqtcreator.openinqtcreator",
-					"group":	"0"	
+					"group":	"0"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"0"	
+					"group":	"0"
 				}
 			]
 		},
