@@ -76,6 +76,10 @@ function ValidCreatorFiles(file:string) : boolean {
 				   || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
     return return_value;
 }
+function ValidDesignerFiles(file:string) : boolean {
+	let return_value:boolean = file.endsWith('ui');
+    return return_value;
+}
 export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
 	let config = vscode.workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
