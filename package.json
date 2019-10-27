@@ -2,7 +2,8 @@
 	"name": "launchqtcreator",
 	"displayName": "LaunchQtCreator",
 	"description": "Launch QtCreator",
-	"icon":"resources/qt.png",
+    "icon": "resources/qt.png",
+    "license":"MIT",
 	"version": "0.0.5",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -32,33 +33,33 @@
 		"menus": {
 			"explorer/context": [
 				{
-      				"command": "launchqtcreator.openinqtcreator",
-				  	"group": "navigation"
+					"command": "launchqtcreator.openinqtcreator",
+					"group": "navigation"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"navigation"
+					"group": "navigation"
 				}
 			],
 			"editor/title/context": [
 				{
 					"when": "",
 					"command": "launchqtcreator.openinqtcreator",
-					"group":	"0"
+					"group": "0"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"0"
+					"group": "0"
 				}
 			],
 			"editor/context": [
 				{
 					"command": "launchqtcreator.openinqtcreator",
-					"group":	"0"
+					"group": "0"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"group":	"0"
+					"group": "0"
 				}
 			]
 		},
@@ -86,7 +87,7 @@
 						"default": "<qt-creator-path>",
 						"description": "Enter the path of QtCreator for this machine"
 					},
-					"launchqtcreator.qtDesignerPath":{
+					"launchqtcreator.qtDesignerPath": {
 						"type": "string",
 						"scope": "resource",
 						"default": "<qt-designer-path>",
