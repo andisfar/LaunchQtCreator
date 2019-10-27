@@ -3,7 +3,7 @@
 	"displayName": "LaunchQtCreator",
 	"description": "Launch QtCreator",
 	"icon":"resources/qt.png",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
 		"name": "Oral Shane Curtis (AngryDane)",
