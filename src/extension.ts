@@ -76,10 +76,19 @@ function ValidCreatorFiles(file:string) : boolean {
 				   || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
     return return_value;
 }
+
 function ValidDesignerFiles(file:string) : boolean {
 	let return_value:boolean = file.endsWith('ui');
     return return_value;
 }
+
+function file_extension(file:string) : string {
+	let basepath: string = path.basename(file);
+	let basepathArray: string[] = basepath.split('.');
+	basepath = "'*." + basepathArray[basepathArray.length - 1] + "'";
+	return basepath;
+}
+
 export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
 	let config = vscode.workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
