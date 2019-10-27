@@ -1,43 +1,53 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import { StatusBarAlignment,
-		 ExtensionContext, 
-		 workspace, 
-		 window, 
-		 commands, 
-		 Command} from 'vscode';
-import { getQtCreatorPath, doLaunchQtCreator } from './creator';
+import * as vscode from 'vscode';
+import { getQtCreatorPath, 
+		 doLaunchQtCreator, 
+		 doLaunchInQtCreator,
+		 getQtDesignerPath,
+		 doLaunchInQtDesigner} from './creator';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: ExtensionContext) {
+export function activate(context: vscode.ExtensionContext) {
 
-	const command = 'extension.launchqtcreator';
-	const commandHandler = (name:string='LaunchQtCreator') => {
-		console.log(`Launch QtCreator via ${name}!!!`);
+	let command:string = 'launchqtcreator.launchqtcreator';
+	let commandHandler = (name:string='LaunchQtCreator') => {
+		if(!LaunchQtCreator())
+		{
+			vscode.window.showErrorMessage("Command " + name + " failed!");
+		}
 	};
-	context.subscriptions.push(commands.registerCommand(command, commandHandler));  
+	context.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));  
+
+	command = 'launchqtcreator.openinqtdesigner';
+	context.subscriptions.push(vscode.commands.registerCommand(command,LaunchInQtDesigner,(_qtfile:vscode.Uri)=>{
+		console.log("designer opening file:" + _qtfile.path);
+	}));  
+
+	command = 'launchqtcreator.openinqtcreator';
+	context.subscriptions.push(vscode.commands.registerCommand(command,LaunchInQtCreator,(_qtfile:vscode.Uri)=>{
+		console.log("qtcreator opening file:" + _qtfile.path);
+	}));  
+
 	// Create a statusbar item
 	try 
 	{
-		let item = window.createStatusBarItem(StatusBarAlignment.Right, undefined);
-		item.text = "Qt Creator";
+		let item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, undefined);
+		item.text = "Launch Qt Creator";
+		item.command = "launchqtcreator.launchqtcreator";
 		item.show();
-		commands.registerCommand("QtCreatorCommand",
-			LaunchQtCreator, function(this:Command, err:any){});
-		item.command = "QtCreatorCommand";
 	} catch (error) {
 		console.log('failed to create statusbar item \"Qt Creator\"');			
-		window.showErrorMessage(error);
+		vscode.window.showErrorMessage(error);
 	}
-	LaunchQtCreator();
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
 
 export async function LaunchQtCreator() : Promise<boolean> {
-	let config = workspace.getConfiguration('launchqtcreator');
+	let config = vscode.workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
 	let return_value:boolean = false; 
 	if(qtcreator === "<qt-creator-path>" || qtcreator === "")
@@ -51,10 +61,68 @@ export async function LaunchQtCreator() : Promise<boolean> {
 	else
 	{		
 		await doLaunchQtCreator(qtcreator).then(()=>{
-			window.showInformationMessage("Launching QtCreator from [" + qtcreator + "]");
+			vscode.window.showInformationMessage("Launching QtCreator");
 			return_value = true;
-		}).then(undefined, ()=>{
-			window.showErrorMessage("Error launching QtCreator from [" + qtcreator + "]");
+		}).then(undefined, err=>{
+			vscode.window.showErrorMessage("Error launching QtCreator\n" + err);
+		});
+	}	
+	return return_value;
+}
+
+export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
+	let config = vscode.workspace.getConfiguration('launchqtcreator');
+	let qtcreator = config.qtCreatorPath;
+	let return_value:boolean = false; 
+	if(qtcreator === "<qt-creator-path>" || qtcreator === "")
+	{		
+		qtcreator = getQtCreatorPath().then(()=>{ 			
+			return_value = true;
+		}).then(undefined, () =>{
+			return_value = false;
+		});			
+	}
+	else
+	{
+		var path = require("path");		
+		await doLaunchInQtCreator(qtcreator,qtfile).then(()=>{
+			vscode.window.showInformationMessage("Opening " 
+												  + path.basename(qtfile.fsPath) + 
+												  " in QtCreator");
+			return_value = true;
+		}).then(undefined, err=>{
+			vscode.window.showErrorMessage("Error opening " 
+											+ path.basename(qtfile.fsPath) 
+											+ " in QtCreator\n" + err);
+		});
+	}	
+	return return_value;
+}
+
+export async function LaunchInQtDesigner(qtfile:vscode.Uri) : Promise<boolean> {
+	let config = vscode.workspace.getConfiguration('launchqtcreator');
+	let qtdesigner = config.qtDesignerPath;
+	let return_value:boolean = false; 
+	if(qtdesigner === "<qt-designer-path>" || qtdesigner === "")
+	{		
+		qtdesigner = getQtDesignerPath().then(()=>{ 			
+			return_value = true;
+		}).then(undefined, () =>{
+			return_value = false;
+		});			
+	}
+	else
+	{
+		var path = require("path");		
+		await doLaunchInQtDesigner(qtdesigner,qtfile).then(()=>{
+			vscode.window.showInformationMessage("Opening " 
+												  + path.basename(qtfile.fsPath) + 
+												  " in Qt Designer");
+			return_value = true;
+		}).then(undefined, err=>{
+			vscode.window.showErrorMessage("Error opening " 
+											+ path.basename(qtfile.fsPath) 
+											+ " in Qt Designer\n" + err);
 		});
 	}	
 	return return_value;

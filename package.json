@@ -2,6 +2,7 @@
 	"name": "launchqtcreator",
 	"displayName": "LaunchQtCreator",
 	"description": "Launch QtCreator",
+	"icon":"resources/qt.png",
 	"version": "0.0.2",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -19,14 +20,60 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.launchqtcreator"
+		"onCommand:launchqtcreator.launchqtcreator",
+		"onCommand:launchqtcreator.openinqtcreator",
+		"onCommand:launchqtcreator.openinqtdesigner",		
+		"workspaceContains:*.pro",
+		"workspaceContains:CMakeLists.txt",
+		"workspaceContains:*.ui"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"menus": {
+			"explorer/context": [
+				{					
+      				"command": "launchqtcreator.openinqtcreator",
+				  	"group": "navigation"
+				},
+				{
+					"command": "launchqtcreator.openinqtdesigner",
+					"group":	"navigation"	
+				}
+			],
+			"editor/title/context": [
+				{
+					"when": "",
+					"command": "launchqtcreator.openinqtcreator",
+					"group":	"0"	
+				},
+				{
+					"command": "launchqtcreator.openinqtdesigner",
+					"group":	"0"	
+				}
+			],
+			"editor/context": [
+				{
+					"command": "launchqtcreator.openinqtcreator",
+					"group":	"0"	
+				},
+				{
+					"command": "launchqtcreator.openinqtdesigner",
+					"group":	"0"	
+				}
+			]
+		},
 		"commands": [
 			{
-				"command": "extension.launchqtcreator",
-				"title": "Qt Creator"
+				"command": "launchqtcreator.launchqtcreator",
+				"title": "Launch Qt Creator"
+			},
+			{
+				"command": "launchqtcreator.openinqtcreator",
+				"title": "Open in Qt Creator"
+			},
+			{
+				"command": "launchqtcreator.openinqtdesigner",
+				"title": "Open in Qt Designer"
 			}
 		],
 		"configuration": [
@@ -38,6 +85,12 @@
 						"scope": "resource",
 						"default": "<qt-creator-path>",
 						"description": "Enter the path of QtCreator for this machine"
+					},
+					"launchqtcreator.qtDesignerPath":{
+						"type": "string",
+						"scope": "resource",
+						"default": "<qt-designer-path>",
+						"description": "Enter the path of Qt Designer for this machine"
 					}
 				}
 			}
