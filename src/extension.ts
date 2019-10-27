@@ -125,6 +125,12 @@ export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
 }
 
 export async function LaunchInQtDesigner(qtfile:vscode.Uri) : Promise<boolean> {
+	if(!ValidDesignerFiles(qtfile.fsPath))
+	{
+		let basepath: string = file_extension(qtfile.fsPath);
+		vscode.window.showErrorMessage("Extension doesn't allow: opening " + basepath + " type files in Qt Designer");
+		return false;
+	}
 	let config = vscode.workspace.getConfiguration('launchqtcreator');
 	let qtdesigner = config.qtDesignerPath;
 	let return_value:boolean = false; 
