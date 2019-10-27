@@ -71,6 +71,11 @@ export async function LaunchQtCreator() : Promise<boolean> {
 	return return_value;
 }
 
+function ValidCreatorFiles(file:string) : boolean {
+	let return_value:boolean = file.endsWith('.pro') || file.endsWith(".qrc")
+				   || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
+    return return_value;
+}
 export async function LaunchInQtCreator(qtfile:vscode.Uri) : Promise<boolean> {
 	let config = vscode.workspace.getConfiguration('launchqtcreator');
 	let qtcreator = config.qtCreatorPath;
