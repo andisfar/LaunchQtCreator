@@ -48,7 +48,7 @@ export async function getQtDesignerPath() {
 
 export async function doLaunchQtCreator(qtcreator: string) {
 	const cp = require('child_process');	
-	await cp.exec(qtcreator + " -client", (err: string, stdout: string) => {
+	await cp.exec(qtcreator + " -color teal -notour -client", (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
@@ -60,7 +60,7 @@ export async function doLaunchQtCreator(qtcreator: string) {
 
 export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri) {
 	const cp = require('child_process');	
-	await cp.exec(qtcreator + " -client " + qtfile.fsPath, (err: string, stdout: string) => {
+	await cp.exec(qtcreator + " -color teal -notour -client " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
@@ -72,7 +72,7 @@ export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri)
 
 export async function doLaunchInQtDesigner(qtdesigner: string, qtfile: vscode.Uri) {
 	const cp = require('child_process');	
-	await cp.exec(qtdesigner + " " + qtfile.fsPath, (err: string, stdout: string) => {
+	await cp.exec(qtdesigner + "  " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
