@@ -21,8 +21,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:launchqtcreator.launchqtcreator",
-		"onCommand:launchqtcreator.openinqtcreator",
+        "onCommand:launchqtcreator.launchqtcreator",
+        "onCommand:launchqtcreator.openinqtcreator",
 		"onCommand:launchqtcreator.openinqtdesigner",
 		"workspaceContains:*.pro",
 		"workspaceContains:CMakeLists.txt",
@@ -33,7 +33,7 @@
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "launchqtcreator.openinqtcreator",
+                    "command": "launchqtcreator.openinqtcreator",
 					"group": "navigation"
 				},
 				{
@@ -43,7 +43,7 @@
 			],
 			"editor/title/context": [
 				{
-					"command": "launchqtcreator.openinqtcreator",
+                    "command": "launchqtcreator.openinqtcreator",
 					"group": "0"
 				},
 				{
@@ -53,7 +53,7 @@
 			],
 			"editor/context": [
 				{
-					"command": "launchqtcreator.openinqtcreator",
+                    "command": "launchqtcreator.openinqtcreator",
 					"group": "0"
 				},
 				{
@@ -68,7 +68,7 @@
 				"title": "Launch Qt Creator"
 			},
 			{
-				"command": "launchqtcreator.openinqtcreator",
+                "command": "launchqtcreator.openinqtcreator",
 				"title": "Open in Qt Creator"
 			},
 			{
