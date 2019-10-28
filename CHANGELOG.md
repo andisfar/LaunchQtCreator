@@ -2,13 +2,21 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
-## [Unreleased]
+## [0.0.6]
 
-- Initial release
+- now uses progress boxes to display information about launcing
 
-## [.0.0.1]
+## [0.0.4]
 
-- added a demo image to the README.md file
+- removed -notour from LaunchQtCreator due to lack of support for this flag on linux
+
+## [0.0.3]
+
+- added command to 'open in' for QtCreator: *.pro, *.ui, *.qrc, CMakeLists.txt files only
+- added command to 'open in' for Qt Designer: *.ui files only
+- commands are available on the selected file in the explorer window context menu
+- commands are available on the open text editor window context menu
+- commands are available on the open text editor title context menu
 
 ## [0.0.2]
 
@@ -20,14 +28,10 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
   'exception' handling to help discover where failuers mught be
   happending when the extension is being used
 
-## [0.0.3]
+## [.0.0.1]
 
-- added command to 'open in' for QtCreator: *.pro, *.ui, *.qrc, CMakeLists.txt files only
-- added command to 'open in' for Qt Designer: *.ui files only
-- commands are available on the selected file in the explorer window context menu
-- commands are available on the open text editor window context menu
-- commands are available on the open text editor title context menu
+- added a demo image to the README.md file
 
-## [0.0.4]
+## [Unreleased]
 
-- removed -notour from LaunchQtCreator due to lack of support for this flag on linux
+- Initial release

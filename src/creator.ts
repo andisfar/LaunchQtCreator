@@ -1,4 +1,6 @@
 import * as vscode from 'vscode';
+var path = require("path");
+
 export async function getQtCreatorPath() {
 	let pathUri = await vscode.window.showOpenDialog({
 		canSelectFolders: false,
@@ -12,13 +14,7 @@ export async function getQtCreatorPath() {
 	let creatorPath = pathUri[0].fsPath;
 	const settings = vscode.workspace.getConfiguration('launchqtcreator');
 	settings.update('qtCreatorPath', creatorPath, vscode.ConfigurationTarget.Global).then(() => {
-		console.log('path from OpenDialog ' + creatorPath);
-		if (doLaunchQtCreator(creatorPath)) {
-			vscode.window.showInformationMessage("Launching QtCreator from [" + creatorPath + "]");
-		}
-		else {
-			vscode.window.showErrorMessage("Error launching QtCreator from [" + creatorPath + "]");
-		}
+		doLaunchQtCreator(creatorPath);
 	}).then(undefined, err => {
 		vscode.window.showErrorMessage('unable to set \"launchqtcreator.qtCreatorPath\"\n(' + err + ")");
 	});
@@ -37,14 +33,12 @@ export async function getQtDesignerPath() {
 	}
 	let designerPath = pathUri[0].fsPath;
 	const settings = vscode.workspace.getConfiguration('launchqtcreator');
-	settings.update('qtDesignerPath', designerPath, vscode.ConfigurationTarget.Global).then(() => {
-		console.log('path from OpenDialog ' + designerPath);
-	}).then(undefined, err => {
+	settings.update('qtDesignerPath', designerPath, vscode.ConfigurationTarget.Global).then(
+        undefined, err => {
 		vscode.window.showErrorMessage('unable to set \"launchqtcreator.qtDesignerPath\"\n(' + err + ")");
 	});
 	return designerPath;
 }
-
 
 export async function doLaunchQtCreator(qtcreator: string) {
 	const cp = require('child_process');
@@ -54,7 +48,7 @@ export async function doLaunchQtCreator(qtcreator: string) {
 		}
 		if (stdout) {
 			console.log('stdout: ' + stdout);
-		}
+        }
 	});
 }
 
@@ -66,7 +60,7 @@ export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri)
 		}
 		if (stdout) {
 			console.log('stdout: ' + stdout);
-		}
+        }
 	});
 }
 
@@ -78,6 +72,24 @@ export async function doLaunchInQtDesigner(qtdesigner: string, qtfile: vscode.Ur
 		}
 		if (stdout) {
 			console.log('stdout: ' + stdout);
-		}
+        }
 	});
+}
+
+export function ValidCreatorFiles(file:string) : boolean {
+	let return_value:boolean = file.endsWith('.pro') || file.endsWith(".qrc")
+				   || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
+    return return_value;
+}
+
+export function ValidDesignerFiles(file:string) : boolean {
+	let return_value:boolean = file.endsWith('ui');
+    return return_value;
+}
+
+export function file_extension(file:string) : string {
+	let basepath: string = path.basename(file);
+	let basepathArray: string[] = basepath.split('.');
+	basepath = "'*." + basepathArray[basepathArray.length - 1] + "'";
+	return basepath;
 }

@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -109,8 +109,8 @@
 		"@types/vscode": "^1.39.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
-		"tslint": "^5.12.1",
-		"typescript": "^3.3.1",
+		"tslint": "^5.20.0",
+		"typescript": "^3.6.4",
 		"vscode-test": "^1.2.0"
 	},
 	"dependencies": {
