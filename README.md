@@ -36,21 +36,13 @@ no known issues
 
 ## Release Notes
 
-### 0.0.1
+### 0.0.6
 
-Initial release - added demo.gif
+- Changed information messages out with progress messages that disapear after 3 seconds.
 
-### 0.0.2
+### 0.0.4
 
-- added a separate ts script file for some creator commands
-  - get the path to QtCreator, and then launch QtCreator
-  - launch QtCreator
-
-- updated the extension to use async functions and added some 
-  'exception' handling to help discover where failuers mught be
-  happending when the extension is being used
-
-The extension now will prompt for a path to the QtCreator executable with a FileOpen dialog
+- removed -notour from LaunchQtCreator due to lack of support for this flag on linux
 
 ### 0.0.3
 
@@ -60,9 +52,21 @@ The extension now will prompt for a path to the QtCreator executable with a File
 - commands are available on the open text editor window context menu
 - commands are available on the open text editor title context menu
 
-### 0.0.4
+### 0.0.2
 
-- removed -notour from LaunchQtCreator due to lack of support for this flag on linux
+- added a separate ts script file for some creator commands
+  - get the path to QtCreator, and then launch QtCreator
+  - launch QtCreator
+
+### 0.0.1
+
+Initial release - added demo.gif
+
+- updated the extension to use async functions and added some 
+  'exception' handling to help discover where failuers mught be
+  happending when the extension is being used
+
+The extension now will prompt for a path to the QtCreator executable with a FileOpen dialog
 
 -----------------------------------------------------------------------------------------------------------
 
