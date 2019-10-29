@@ -42,7 +42,7 @@ export async function getQtDesignerPath() {
 
 export async function doLaunchQtCreator(qtcreator: string) {
 	const cp = require('child_process');
-	await cp.exec(qtcreator + " -color teal -client", (err: string, stdout: string) => {
+	await cp.exec(qtcreator + " -color teal", (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
@@ -54,7 +54,7 @@ export async function doLaunchQtCreator(qtcreator: string) {
 
 export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri) {
 	const cp = require('child_process');
-	await cp.exec(qtcreator + " -color teal -client " + qtfile.fsPath, (err: string, stdout: string) => {
+	await cp.exec(qtcreator + " -color teal " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
 		}
