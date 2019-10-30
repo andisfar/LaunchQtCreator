@@ -7,13 +7,20 @@ old_names=$(ls ./latest/)
 test -d ./Releases || mkdir ./Releases
 
 for name in ${old_names}; do
-    mv ./latest/${name} ./Releases
+    test "./latest/${name}" == "${new_name}" && {
+        echo "remove old file with same name..."
+        rm -f ${nme}
+     } ||{
+        echo "move previous file to ./Releases"
+        mv ./latest/${name} ./Releases
+     }
 done
 
 [ "${new_name}xx" == "xx" ] && {
     echo "specify new name";
     exit -1
 }|| {
+    echo "generating new package: '${new_name}'"
     vsce package -o ${new_name}
 }
 exit 0

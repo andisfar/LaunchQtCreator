@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -21,8 +21,9 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:launchqtcreator.launchqtcreator",
-        "onCommand:launchqtcreator.openinqtcreator",
+		"onCommand:launchqtcreator.launchqtselection",
+		"onCommand:launchqtcreator.launchqtcreator",
+		"onCommand:launchqtcreator.openinqtcreator",
 		"onCommand:launchqtcreator.openinqtdesigner",
 		"workspaceContains:*.pro",
 		"workspaceContains:CMakeLists.txt",
@@ -33,7 +34,7 @@
 		"menus": {
 			"explorer/context": [
 				{
-                    "command": "launchqtcreator.openinqtcreator",
+					"command": "launchqtcreator.openinqtcreator",
 					"group": "navigation"
 				},
 				{
@@ -43,7 +44,7 @@
 			],
 			"editor/title/context": [
 				{
-                    "command": "launchqtcreator.openinqtcreator",
+					"command": "launchqtcreator.openinqtcreator",
 					"group": "0"
 				},
 				{
@@ -53,7 +54,7 @@
 			],
 			"editor/context": [
 				{
-                    "command": "launchqtcreator.openinqtcreator",
+					"command": "launchqtcreator.openinqtcreator",
 					"group": "0"
 				},
 				{
@@ -64,11 +65,19 @@
 		},
 		"commands": [
 			{
+				"command": "launchqtcreator.launchqtselection",
+				"title": "Launch Qt Tool Selection"
+			},
+			{
 				"command": "launchqtcreator.launchqtcreator",
 				"title": "Launch Qt Creator"
 			},
 			{
-                "command": "launchqtcreator.openinqtcreator",
+				"command": "launchqtcreator.launchqtdesigner",
+				"title": "Launch Qt Designer"
+			},
+			{
+				"command": "launchqtcreator.openinqtcreator",
 				"title": "Open in Qt Creator"
 			},
 			{
@@ -105,7 +114,7 @@
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.17.0",
+		"@types/node": "^10.17.2",
 		"@types/vscode": "^1.39.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
@@ -116,6 +125,6 @@
 	"dependencies": {
 		"es6": "0.0.7",
 		"eslint": "^6.6.0",
-		"vsce": "^1.68.0"
+		"vsce": "^1.69.0"
 	}
 }

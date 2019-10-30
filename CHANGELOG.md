@@ -2,6 +2,12 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.0.7]
+
+- Opens QtCreator or Qt Designer with no files via user selection from a Quick Pick.
+- Added context menus for opening files in QtCreator or Qt Desinger (as applicable),
+  from the explorer, editor title, or editor.
+
 ## [0.0.6]
 
 - now uses progress boxes to display information about launcing
