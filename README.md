@@ -2,11 +2,11 @@
 
 QtCreator is very useful for certain tasks! When working on Qt projects, there are things I find Qt Creator invaluable for -just too convenient to use anything else (almost). I often use Vislual Studio Code and QtCreator together when working on c++/gui projects
 
-![Qt Creator Launcher](src/images/demo.gif)
+![Qt Creator Launcher](src/images/selection_tool.gif)
 
 ## Features
 
-- launches QtCreator from within code with the click of a button
+- launches QtCreator or Qt Designer from within code with the click of a button
 
 - if the path to QtCreator is empty then the user is prompted to
   supply the path via a file open dialog
@@ -36,9 +36,13 @@ no known issues
 
 ## Release Notes
 
+### 0.0.7
+
+- Opens QtCreator or Qt Designer with no files via user selection from a Quick Pick.
+
 ### 0.0.6
 
-- Changed information messages out with progress messages that disapear after 3 seconds.
+- Changed information messages out with progress messages that disapear after a few seconds.
 
 ### 0.0.4
 

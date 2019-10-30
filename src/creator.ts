@@ -52,6 +52,18 @@ export async function doLaunchQtCreator(qtcreator: string) {
 	});
 }
 
+export async function doLaunchQtDesigner(qtdesigner: string) {
+	const cp = require('child_process');
+	await cp.exec(qtdesigner, (err: string, stdout: string) => {
+		if (err) {
+			console.log('error: ' + err);
+		}
+		if (stdout) {
+			console.log('stdout: ' + stdout);
+        }
+	});
+}
+
 export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri) {
 	const cp = require('child_process');
 	await cp.exec(qtcreator + " -color teal " + qtfile.fsPath, (err: string, stdout: string) => {
