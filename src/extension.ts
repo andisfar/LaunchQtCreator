@@ -23,22 +23,50 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.window.showQuickPick(selections).then((selection)=>{
             if(selection === 'QtCreator')
             {
-                LaunchQtCreator();
+                let success:Promise<boolean> = LaunchQtCreator().then((success:boolean)=>{
+                    return success;
+                }).then(undefined, (error:string) =>
+                {
+                    console.log("error calling LaunchQtCreator-[" + error + "]");
+                    vscode.window.showInformationMessage("error calling LaunchQtCreator-[" + error + "]");
+                    return false;
+                });
+                if(success)
+                {
+                    vscode.window.withProgress({
+                        location : vscode.ProgressLocation.Window,
+                        title : "Launching QtCreator...",
+                        cancellable: false}, () => {
+                        var p = new Promise<boolean>(resolve=> {
+                            setTimeout(() => {
+                            resolve();
+                        }, 8000);});return p;});
+                    console.log("called LaunchQtCreator");
+                }
             }
             if(selection === 'Qt Designer')
             {
-                LaunchQtDesigner();
+                let success:Promise<boolean> = LaunchQtDesigner().then((success:boolean)=>{
+                    return success;
+                }).then(undefined, (error:string) => {
+                    console.log("error calling LaunchQtDesigner-[" + error + "]");
+                    vscode.window.showInformationMessage("error calling LaunchQtDesigner-[" + error + "]");
+                    return false;
+                });
+                if(success)
+                {
+                    vscode.window.withProgress({
+                        location : vscode.ProgressLocation.Window,
+                        title : "Launching Qt Designer...",
+                        cancellable: false}, () => {
+                        var p = new Promise<boolean>(resolve=> {
+                            setTimeout(() => {
+                            resolve();
+                        }, 3000);});return p;});
+                    console.log("called Qt Designer");
+                }
             }
-            vscode.window.withProgress({
-                location : vscode.ProgressLocation.Window,
-                title : "Launching " + selection + "...",
-                cancellable: false}, () => {
-                var p = new Promise<boolean>(resolve=> {
-                    setTimeout(() => {
-                    resolve();
-                }, 8000);});return p;});
-        });
-    };
+        });};
 	context.subscriptions.push(vscode.commands.registerCommand(command, commandHandler));
 
     // command to launch Qt Tool Selection
@@ -161,7 +189,7 @@ function MakeLaunchQtSelectionStatusbarItem() : any {
 export function deactivate() {}
 
 export async function LaunchQtCreator() : Promise<boolean> {
-    let return_value:boolean = false;
+    let return_value:boolean = true;
     let config = vscode.workspace.getConfiguration('launchqtcreator');
     let qtcreator = config.qtCreatorPath;
     if(qtcreator === "<qt-creator-path>" || qtcreator === "")
@@ -173,7 +201,7 @@ export async function LaunchQtCreator() : Promise<boolean> {
             return_value = false;
         });
     }
-    if(!return_value)
+    if(return_value)
     {
         doLaunchQtCreator(qtcreator).then(()=>{
             console.log('called doLaunchQtCreator with path ' + qtcreator);
@@ -198,7 +226,7 @@ export async function LaunchQtDesigner() : Promise<boolean> {
             return_value = false;
         });
     }
-    if(!return_value)
+    if(return_value)
     {
         doLaunchQtDesigner(qtdesigner).then(()=>{
             console.log('called doLaunchQtDesigner with path ' + qtdesigner);
