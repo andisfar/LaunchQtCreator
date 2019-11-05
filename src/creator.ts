@@ -1,8 +1,16 @@
-import * as vscode from 'vscode';
+import
+{
+    Uri,
+    window,
+    workspace,
+    ConfigurationTarget
+} from 'vscode';
+
 var path = require("path");
+var   cp = require('child_process');
 
 export async function getQtCreatorPath() {
-	let pathUri = await vscode.window.showOpenDialog({
+	let pathUri = await window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
 		canSelectMany: false,
@@ -12,17 +20,17 @@ export async function getQtCreatorPath() {
 		return null;
 	}
 	let creatorPath = pathUri[0].fsPath;
-	const settings = vscode.workspace.getConfiguration('launchqtcreator');
-	settings.update('qtCreatorPath', creatorPath, vscode.ConfigurationTarget.Global).then(() => {
+	const settings = workspace.getConfiguration('launchqtcreator');
+	settings.update('qtCreatorPath', creatorPath, ConfigurationTarget.Global).then(() => {
 		doLaunchQtCreator(creatorPath);
 	}).then(undefined, err => {
-		vscode.window.showErrorMessage('unable to set \"launchqtcreator.qtCreatorPath\"\n(' + err + ")");
+		window.showErrorMessage('unable to set \"launchqtcreator.qtCreatorPath\"\n(' + err + ")");
 	});
 	return creatorPath;
 }
 
 export async function getQtDesignerPath() {
-	let pathUri = await vscode.window.showOpenDialog({
+	let pathUri = await window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
 		canSelectMany: false,
@@ -32,16 +40,15 @@ export async function getQtDesignerPath() {
 		return null;
 	}
 	let designerPath = pathUri[0].fsPath;
-	const settings = vscode.workspace.getConfiguration('launchqtcreator');
-	settings.update('qtDesignerPath', designerPath, vscode.ConfigurationTarget.Global).then(
+	const settings = workspace.getConfiguration('launchqtcreator');
+	settings.update('qtDesignerPath', designerPath, ConfigurationTarget.Global).then(
         undefined, err => {
-		vscode.window.showErrorMessage('unable to set \"launchqtcreator.qtDesignerPath\"\n(' + err + ")");
+		window.showErrorMessage('unable to set \"launchqtcreator.qtDesignerPath\"\n(' + err + ")");
 	});
 	return designerPath;
 }
 
 export async function doLaunchQtCreator(qtcreator: string) {
-	const cp = require('child_process');
 	await cp.exec(qtcreator + " -color teal", (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
@@ -53,7 +60,6 @@ export async function doLaunchQtCreator(qtcreator: string) {
 }
 
 export async function doLaunchQtDesigner(qtdesigner: string) {
-	const cp = require('child_process');
 	await cp.exec(qtdesigner, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
@@ -64,8 +70,7 @@ export async function doLaunchQtDesigner(qtdesigner: string) {
 	});
 }
 
-export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri) {
-	const cp = require('child_process');
+export async function doLaunchInQtCreator({ qtcreator, qtfile }: { qtcreator: string; qtfile: Uri; }) {
 	await cp.exec(qtcreator + " -color teal " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
@@ -76,8 +81,7 @@ export async function doLaunchInQtCreator(qtcreator: string, qtfile: vscode.Uri)
 	});
 }
 
-export async function doLaunchInQtDesigner(qtdesigner: string, qtfile: vscode.Uri) {
-	const cp = require('child_process');
+export async function doLaunchInQtDesigner({ qtdesigner, qtfile }: { qtdesigner: string; qtfile: Uri; }) {
 	await cp.exec(qtdesigner + "  " + qtfile.fsPath, (err: string, stdout: string) => {
 		if (err) {
 			console.log('error: ' + err);
@@ -86,22 +90,4 @@ export async function doLaunchInQtDesigner(qtdesigner: string, qtfile: vscode.Ur
 			console.log('stdout: ' + stdout);
         }
 	});
-}
-
-export function ValidCreatorFiles(file:string) : boolean {
-	let return_value:boolean = file.endsWith('.pro') || file.endsWith(".qrc")
-				   || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
-    return return_value;
-}
-
-export function ValidDesignerFiles(file:string) : boolean {
-	let return_value:boolean = file.endsWith('ui');
-    return return_value;
-}
-
-export function file_extension(file:string) : string {
-	let basepath: string = path.basename(file);
-	let basepathArray: string[] = basepath.split('.');
-	basepath = "'*." + basepathArray[basepathArray.length - 1] + "'";
-	return basepath;
 }
