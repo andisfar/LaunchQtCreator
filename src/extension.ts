@@ -11,25 +11,18 @@ import
     workspace
 } from 'vscode';
 //
-import
-{
-    doLaunchInQtCreator,
-    doLaunchInQtDesigner,
-    doLaunchQtCreator,
-    doLaunchQtDesigner,
-    getQtCreatorPath,
-    getQtDesignerPath,
-} from './creator';
+import {LaunchQtCreator, LaunchInQtCreator} from './creator';
 //
-import { file_extension } from "./file_extension";
-//
-import { ValidDesignerFiles } from "./ValidDesignerFiles";
-//
-import { ValidCreatorFiles } from "./ValidCreatorFiles";
+import {LaunchQtDesigner, LaunchInQtDesigner} from './designer';
 
 var path = require("path");
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+
+export function ValidCreatorFiles(file: string): boolean {
+    let return_value: boolean = file.endsWith('.pro') || file.endsWith(".qrc")
+        || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
+    return return_value;
+}
+
 export function activate(context: ExtensionContext) {
     // command to launch Qt Tool Selection
 	let command:string = 'launchqtcreator.launchqtselection';
@@ -52,7 +45,7 @@ export function activate(context: ExtensionContext) {
                         setTimeout(() =>
                         {
                             resolve(LaunchQtCreator());
-                        }, 2000);
+                        }, 5000);
                     });return p;
                 }).then(success =>
                 {
@@ -164,7 +157,7 @@ export function activate(context: ExtensionContext) {
                 setTimeout(() =>
                 {
                     resolve(LaunchInQtCreator(qtFile));
-                }, 2000);
+                }, 5000);
             });return p;
         });
     };
@@ -213,145 +206,3 @@ function MakeLaunchQtSelectionStatusbarItem() : any {
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
-
-export async function LaunchQtCreator() : Promise<boolean> {
-    let return_value:boolean = true;
-    let config = workspace.getConfiguration('launchqtcreator');
-    let qtcreator:string = config.qtCreatorPath;
-    if(qtcreator === "<qt-creator-path>" || qtcreator === "")
-    {
-        await getQtCreatorPath().then(async path =>
-        {
-            qtcreator = path;
-            console.log('successfully called getQtCreatorPath: result [' + qtcreator + ']');
-            await doLaunchQtDesigner(qtcreator).then(()=>{
-                console.log('called doLaunchQtDesigner with path ' + qtcreator);
-                return_value = true;
-            }).then(undefined, ()=>{
-                return_value = false;
-            });
-        }).then(undefined, () =>{
-            return_value = false;
-        });
-    }
-    else
-    {
-        doLaunchQtCreator(qtcreator).then(()=>{
-            console.log('called doLaunchQtCreator with path ' + qtcreator);
-            return_value = true;
-        }).then(undefined, ()=>{
-            return_value = false;
-        });
-    }
-	return return_value;
-}
-
-export async function LaunchQtDesigner() : Promise<boolean> {
-    let return_value:boolean = true;
-    let config = workspace.getConfiguration('launchqtcreator');
-    let qtdesigner:string = config.qtDesignerPath;
-    if(qtdesigner === "<qt-designer-path>" || qtdesigner === "")
-    {
-        await getQtDesignerPath().then(async path =>
-        {
-            qtdesigner = path;
-            console.log('successfully called getQtDesignerPath: result [' + qtdesigner + ']');
-            await doLaunchQtDesigner(qtdesigner).then(()=>{
-                console.log('called doLaunchQtDesigner with path ' + qtdesigner);
-                return_value = true;
-            }).then(undefined, ()=>{
-                return_value = false;
-            });
-        }).then(undefined, () =>{
-            return_value = false;
-        });
-    }
-    else
-    {
-        await doLaunchQtDesigner(qtdesigner).then(()=>{
-            console.log('called doLaunchQtDesigner with path ' + qtdesigner);
-            return_value = true;
-        }).then(undefined, ()=>{
-            return_value = false;
-        });
-    }
-	return return_value;
-}
-
-export async function LaunchInQtCreator(qtFile:Uri) : Promise<boolean> {
-    let return_value:boolean = ValidCreatorFiles(qtFile.fsPath);
-    if(return_value)
-    {
-        let config = workspace.getConfiguration('launchqtcreator');
-        let qtcreator:string = config.qtCreatorPath;
-        if(qtcreator === "<qt-creator-path>" || qtcreator === "")
-        {
-            await getQtCreatorPath().then(async path =>
-            {
-                qtcreator = path;
-                console.log('successfully called getQtCreatorPath: result [' + qtcreator + ']');
-                await doLaunchInQtCreator({ qtcreator, qtfile: qtFile }).then(()=>{
-                    console.log('called doLaunchInQtCreator with path ' +
-                    qtcreator +
-                    " " + qtFile.fsPath);
-                    return_value = true;
-                }).then(undefined, ()=>{
-                    return_value = false;
-                });
-            }).then(undefined, () =>{
-                return_value = false;
-            });
-        }
-        else
-        {
-            await doLaunchInQtCreator({ qtcreator, qtfile: qtFile }).then(()=>{
-                console.log('called doLaunchInQtCreator with path ' +
-                qtcreator +
-                " " + qtFile.fsPath);
-                return_value = true;
-            }).then(undefined, ()=>{
-                return_value = false;
-            });
-        }
-    }
-	return return_value;
-}
-
-export async function LaunchInQtDesigner(qtFile:Uri) : Promise<boolean> {
-    let return_value:boolean = ValidDesignerFiles(qtFile.fsPath);
-    if(return_value)
-    {
-        let config = workspace.getConfiguration('launchqtcreator');
-        let qtdesigner:string  = config.qtDesignerPath;
-        if(qtdesigner === "<qt-designer-path>" || qtdesigner === "")
-        {
-            await getQtDesignerPath().then( async path =>
-            {
-                qtdesigner = path;
-                console.log('successfully called getQtDesignerPath: result [' + qtdesigner + ']');
-                await doLaunchInQtDesigner({ qtdesigner, qtfile: qtFile }).then(()=>{
-                    console.log('called doLaunchInQtDesigner with path ' +
-                    qtdesigner +
-                    " " + qtFile.fsPath);
-                    return_value = true;
-                }).then(undefined, ()=>{
-                    return_value = false;
-                });
-            }).then(undefined, () =>{
-                return_value = false;
-            });
-        }
-        else
-        {
-            await doLaunchInQtDesigner({ qtdesigner, qtfile: qtFile }).then(()=>{
-                console.log('called doLaunchInQtDesigner with path ' +
-                qtdesigner +
-                " " + qtFile.fsPath);
-                return_value = true;
-            }).then(undefined, ()=>{
-                return_value = false;
-            });
-        }
-    }
-	return return_value;
-}
