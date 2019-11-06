@@ -33,99 +33,115 @@ var path = require("path");
 export function activate(context: ExtensionContext) {
     // command to launch Qt Tool Selection
 	let command:string = 'launchqtcreator.launchqtselection';
-	let commandHandler = () => {
+    let commandHandler = () =>
+    {
         let selections: string[] = ["QtCreator","Qt Designer"];
-        window.showQuickPick(selections).then((selection)=>{
+        window.showQuickPick(selections).then((selection)=>
+        {
             if(selection === 'QtCreator')
             {
-                let success:Promise<boolean> = LaunchQtCreator().then((success:boolean)=>{
-                    return success;
-                }).then(undefined, (error:string) =>
+                window.withProgress(
                 {
-                    console.log("error calling LaunchQtCreator-[" + error + "]");
-                    window.showInformationMessage("error calling LaunchQtCreator-[" + error + "]");
-                    return false;
+                    location : ProgressLocation.Notification,
+                    title : "Launching QtCreator...",
+                    cancellable: false
+                }, () =>
+                {
+                    var p = new Promise<boolean>(resolve=>
+                    {
+                        setTimeout(() =>
+                        {
+                            resolve(LaunchQtCreator());
+                        }, 2000);
+                    });return p;
+                }).then(success =>
+                {
+                    if(!success)
+                    {
+                        console.log("error calling LaunchQtCreator");
+                        window.showErrorMessage("error calling LaunchQtCreator");
+                    }
+                },rejected_because =>
+                {
+                    console.log("promise rejection from LaunchQtCreator: " + rejected_because);
+                    window.showErrorMessage("promise rejection from LaunchQtCreator: " + rejected_because);
                 });
-                if(success)
-                {
-                    window.withProgress({
-                        location : ProgressLocation.Window,
-                        title : "Launching QtCreator...",
-                        cancellable: false}, () => {
-                        var p = new Promise<boolean>(resolve=> {
-                            setTimeout(() => {
-                            resolve();
-                        }, 8000);});return p;});
-                    console.log("called LaunchQtCreator");
-                }
             }
             if(selection === 'Qt Designer')
             {
-                let success:Promise<boolean> = LaunchQtDesigner().then((success:boolean)=>{
-                    return success;
-                }).then(undefined, (error:string) => {
-                    console.log("error calling LaunchQtDesigner-[" + error + "]");
-                    window.showInformationMessage("error calling LaunchQtDesigner-[" + error + "]");
-                    return false;
-                });
-                if(success)
+                window.withProgress(
                 {
-                    window.withProgress({
-                        location : ProgressLocation.Window,
-                        title : "Launching Qt Designer...",
-                        cancellable: false}, () => {
-                        var p = new Promise<boolean>(resolve=> {
-                            setTimeout(() => {
-                            resolve();
-                        }, 3000);});return p;});
-                    console.log("called Qt Designer");
-                }
-            }
-        });};
-	context.subscriptions.push(commands.registerCommand(command, commandHandler));
-
-    // command to launch Qt Tool Selection
-	command = 'launchqtcreator.launchqtcreator';
-	commandHandler = () => {
-        LaunchQtCreator().then((success)=>{
-            if(!success)
-            {
-                window.showErrorMessage("unknown error launching QtCreator...");
-            }
-            else
-            {
-                window.withProgress({
-                    location : ProgressLocation.Window,
-                    title : "Launching QtCreator...",
-                    cancellable: false}, () => {
-                    var p = new Promise<boolean>(resolve=> {
-                        setTimeout(() => {
-                        resolve();
-                    }, 8000);});return p;});
-            }
-        });};
-	context.subscriptions.push(commands.registerCommand(command, commandHandler));
-
-    // command to launch Qt Tool Selection
-	command = 'launchqtcreator.launchqtdesigner';
-	commandHandler = () => {
-        LaunchQtDesigner().then((success)=>{
-            if(!success)
-            {
-                window.showErrorMessage("unknown error launching Qt Designer...");
-            }
-            else
-            {
-                window.withProgress({
-                    location : ProgressLocation.Window,
+                    location : ProgressLocation.Notification,
                     title : "Launching Qt Designer...",
-                    cancellable: false}, () => {
-                    var p = new Promise<boolean>(resolve=> {
-                        setTimeout(() => {
-                        resolve();
-                    }, 8000);});return p;});
+                    cancellable: false
+                }, () =>
+                {
+                    var p = new Promise<boolean>(resolve=>
+                    {
+                        setTimeout(() =>
+                        {
+                            resolve(LaunchQtDesigner());
+                        }, 2000);
+                    });return p;
+                }).then(success =>
+                {
+                    if(!success)
+                    {
+                        console.log("error calling LaunchQtDesigner");
+                        window.showErrorMessage("error calling LaunchQtDesigner");
+                    }
+                },rejected_because =>
+                {
+                    console.log("promise rejection from LaunchQtDesigner: " + rejected_because);
+                    window.showErrorMessage("promise rejection from LaunchQtDesigner: " + rejected_because);
+                });
             }
-        });};
+        });
+    };
+	context.subscriptions.push(commands.registerCommand(command, commandHandler));
+
+    // command to launch Qt Creator
+	command = 'launchqtcreator.launchqtcreator';
+    commandHandler = () =>
+    {
+        window.withProgress(
+        {
+            location : ProgressLocation.Window,
+            title : "Launching QtCreator...",
+            cancellable: false
+        }, () =>
+        {
+            var p = new Promise<boolean>(resolve=>
+            {
+                setTimeout(() =>
+                {
+                    resolve(LaunchQtCreator());
+                }, 2000);
+            });return p;
+        });
+    };
+	context.subscriptions.push(commands.registerCommand(command, commandHandler));
+
+    // command to launch Qt Designer
+	command = 'launchqtcreator.launchqtdesigner';
+    commandHandler = () =>
+    {
+        window.withProgress(
+        {
+            location : ProgressLocation.Window,
+            title : "Launching Qt Designer...",
+            cancellable: false
+        }, () =>
+        {
+            var p = new Promise<boolean>(resolve=>
+            {
+                setTimeout(() =>
+                {
+                    resolve(LaunchQtDesigner());
+                }, 2000);
+            });return p;
+        });
+    };
 	context.subscriptions.push(commands.registerCommand(command, commandHandler));
 
     // command to open a file in QtCreator:
@@ -134,24 +150,22 @@ export function activate(context: ExtensionContext) {
     // QtCreator Form files (*.ui)
     // QtCreatpr Resource Files (*.qrc)
     command = 'launchqtcreator.openinqtcreator';
-    let commandInHandler = (qtFile:Uri) => {
-        LaunchInQtCreator(qtFile).then((success)=>{
-            if(!success)
+    let commandInHandler = (qtFile:Uri) =>
+    {
+        window.withProgress(
+        {
+            location : ProgressLocation.Notification,
+            title : "Launching " + path.basename(qtFile.fsPath) + " in QtCreator ...",
+            cancellable: false
+        }, () =>
+        {
+            var p = new Promise<boolean>(resolve=>
             {
-                window.showErrorMessage("allowed files from extension: *.pro, CMakeLists.txt, *.ui, *.qrc...\n"+
-                "attempted loading '" + file_extension(qtFile.fsPath) + "'");
-            }
-            else
-            {
-                window.withProgress({
-                    location : ProgressLocation.Notification,
-                    title : "Launching " + path.basename(qtFile.fsPath) + " in QtCreator ...",
-                    cancellable: false}, () => {
-                    var p = new Promise<boolean>(resolve=> {
-                        setTimeout(() => {
-                        resolve();
-                    }, 8000);});return p;});
-            }
+                setTimeout(() =>
+                {
+                    resolve(LaunchInQtCreator(qtFile));
+                }, 2000);
+            });return p;
         });
     };
     context.subscriptions.push(commands.registerCommand(command, commandInHandler));
@@ -159,26 +173,23 @@ export function activate(context: ExtensionContext) {
     // command to open a file in Qt Designer:
     // QtCreator Form files (*.ui)
     command = 'launchqtcreator.openinqtdesigner';
-    commandInHandler = (qtFile:Uri) => {
-        LaunchInQtDesigner(qtFile).then((success)=>{
-            if(!success)
+    commandInHandler = (qtFile:Uri) =>
+    {
+        window.withProgress(
+        {
+            location : ProgressLocation.Notification,
+            title : "Launching " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
+            cancellable: false
+        }, () =>
+        {
+            var p = new Promise<boolean>(resolve=>
             {
-                window.showErrorMessage("allowed files from extension: *.ui...\n"+
-                "attempted loading '" + file_extension(qtFile.fsPath) + "'");
-            }
-            else
-            {
-                window.withProgress({
-                    location : ProgressLocation.Notification,
-                    title : "Launching " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
-                    cancellable: false}, () => {
-                    var p = new Promise<boolean>(resolve=> {
-                        setTimeout(() => {
-                        resolve();
-                    }, 8000);});return p;});
-            }
+                setTimeout(() =>
+                {
+                    resolve(LaunchInQtDesigner(qtFile));
+                }, 2000);
+            });return p;
         });
-
     };
     context.subscriptions.push(commands.registerCommand(command, commandInHandler));
 
@@ -206,17 +217,24 @@ export function deactivate() {}
 export async function LaunchQtCreator() : Promise<boolean> {
     let return_value:boolean = true;
     let config = workspace.getConfiguration('launchqtcreator');
-    let qtcreator = config.qtCreatorPath;
+    let qtcreator:string = config.qtCreatorPath;
     if(qtcreator === "<qt-creator-path>" || qtcreator === "")
     {
-        qtcreator = getQtCreatorPath().then(()=>{
+        await getQtCreatorPath().then(async path =>
+        {
+            qtcreator = path;
             console.log('successfully called getQtCreatorPath: result [' + qtcreator + ']');
-            return_value = true;
+            await doLaunchQtDesigner(qtcreator).then(()=>{
+                console.log('called doLaunchQtDesigner with path ' + qtcreator);
+                return_value = true;
+            }).then(undefined, ()=>{
+                return_value = false;
+            });
         }).then(undefined, () =>{
             return_value = false;
         });
     }
-    if(return_value)
+    else
     {
         doLaunchQtCreator(qtcreator).then(()=>{
             console.log('called doLaunchQtCreator with path ' + qtcreator);
@@ -231,19 +249,26 @@ export async function LaunchQtCreator() : Promise<boolean> {
 export async function LaunchQtDesigner() : Promise<boolean> {
     let return_value:boolean = true;
     let config = workspace.getConfiguration('launchqtcreator');
-    let qtdesigner = config.qtDesignerPath;
-    if(qtdesigner === "<qt-creator-path>" || qtdesigner === "")
+    let qtdesigner:string = config.qtDesignerPath;
+    if(qtdesigner === "<qt-designer-path>" || qtdesigner === "")
     {
-        qtdesigner = getQtDesignerPath().then(()=>{
+        await getQtDesignerPath().then(async path =>
+        {
+            qtdesigner = path;
             console.log('successfully called getQtDesignerPath: result [' + qtdesigner + ']');
-            return_value = true;
+            await doLaunchQtDesigner(qtdesigner).then(()=>{
+                console.log('called doLaunchQtDesigner with path ' + qtdesigner);
+                return_value = true;
+            }).then(undefined, ()=>{
+                return_value = false;
+            });
         }).then(undefined, () =>{
             return_value = false;
         });
     }
-    if(return_value)
+    else
     {
-        doLaunchQtDesigner(qtdesigner).then(()=>{
+        await doLaunchQtDesigner(qtdesigner).then(()=>{
             console.log('called doLaunchQtDesigner with path ' + qtdesigner);
             return_value = true;
         }).then(undefined, ()=>{
@@ -258,12 +283,14 @@ export async function LaunchInQtCreator(qtFile:Uri) : Promise<boolean> {
     if(return_value)
     {
         let config = workspace.getConfiguration('launchqtcreator');
-        let qtcreator = config.qtCreatorPath;
+        let qtcreator:string = config.qtCreatorPath;
         if(qtcreator === "<qt-creator-path>" || qtcreator === "")
         {
-            qtcreator = getQtCreatorPath().then(()=>{
+            await getQtCreatorPath().then(async path =>
+            {
+                qtcreator = path;
                 console.log('successfully called getQtCreatorPath: result [' + qtcreator + ']');
-                doLaunchInQtCreator({ qtcreator, qtfile: qtFile }).then(()=>{
+                await doLaunchInQtCreator({ qtcreator, qtfile: qtFile }).then(()=>{
                     console.log('called doLaunchInQtCreator with path ' +
                     qtcreator +
                     " " + qtFile.fsPath);
@@ -277,7 +304,7 @@ export async function LaunchInQtCreator(qtFile:Uri) : Promise<boolean> {
         }
         else
         {
-            doLaunchInQtCreator({ qtcreator, qtfile: qtFile }).then(()=>{
+            await doLaunchInQtCreator({ qtcreator, qtfile: qtFile }).then(()=>{
                 console.log('called doLaunchInQtCreator with path ' +
                 qtcreator +
                 " " + qtFile.fsPath);
@@ -295,12 +322,14 @@ export async function LaunchInQtDesigner(qtFile:Uri) : Promise<boolean> {
     if(return_value)
     {
         let config = workspace.getConfiguration('launchqtcreator');
-        let qtdesigner = config.qtDesignerPath;
+        let qtdesigner:string  = config.qtDesignerPath;
         if(qtdesigner === "<qt-designer-path>" || qtdesigner === "")
         {
-            qtdesigner = getQtDesignerPath().then(()=>{
+            await getQtDesignerPath().then( async path =>
+            {
+                qtdesigner = path;
                 console.log('successfully called getQtDesignerPath: result [' + qtdesigner + ']');
-                doLaunchInQtDesigner({ qtdesigner, qtfile: qtFile }).then(()=>{
+                await doLaunchInQtDesigner({ qtdesigner, qtfile: qtFile }).then(()=>{
                     console.log('called doLaunchInQtDesigner with path ' +
                     qtdesigner +
                     " " + qtFile.fsPath);
@@ -314,7 +343,7 @@ export async function LaunchInQtDesigner(qtFile:Uri) : Promise<boolean> {
         }
         else
         {
-            doLaunchInQtDesigner({ qtdesigner, qtfile: qtFile }).then(()=>{
+            await doLaunchInQtDesigner({ qtdesigner, qtfile: qtFile }).then(()=>{
                 console.log('called doLaunchInQtDesigner with path ' +
                 qtdesigner +
                 " " + qtFile.fsPath);

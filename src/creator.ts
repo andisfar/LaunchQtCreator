@@ -3,13 +3,14 @@ import
     Uri,
     window,
     workspace,
-    ConfigurationTarget
+    ConfigurationTarget,
+    WorkspaceConfiguration
 } from 'vscode';
 
 var path = require("path");
 var   cp = require('child_process');
 
-export async function getQtCreatorPath() {
+export async function getQtCreatorPath() : Promise<string> {
 	let pathUri = await window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
@@ -17,10 +18,10 @@ export async function getQtCreatorPath() {
 		openLabel: 'Select the QtCreator executable to launch'
 	});
 	if (!pathUri) {
-		return null;
+		return "";
 	}
-	let creatorPath = pathUri[0].fsPath;
-	const settings = workspace.getConfiguration('launchqtcreator');
+	let creatorPath:string = pathUri[0].fsPath;
+	const settings:WorkspaceConfiguration = workspace.getConfiguration('launchqtcreator');
 	settings.update('qtCreatorPath', creatorPath, ConfigurationTarget.Global).then(() => {
 		doLaunchQtCreator(creatorPath);
 	}).then(undefined, err => {
@@ -29,7 +30,7 @@ export async function getQtCreatorPath() {
 	return creatorPath;
 }
 
-export async function getQtDesignerPath() {
+export async function getQtDesignerPath() : Promise<string> {
 	let pathUri = await window.showOpenDialog({
 		canSelectFolders: false,
 		canSelectFiles: true,
@@ -37,10 +38,10 @@ export async function getQtDesignerPath() {
 		openLabel: 'Select the Qt Designer executable to launch'
 	});
 	if (!pathUri) {
-		return null;
+		return "";
 	}
 	let designerPath = pathUri[0].fsPath;
-	const settings = workspace.getConfiguration('launchqtcreator');
+	const settings:WorkspaceConfiguration = workspace.getConfiguration('launchqtcreator');
 	settings.update('qtDesignerPath', designerPath, ConfigurationTarget.Global).then(
         undefined, err => {
 		window.showErrorMessage('unable to set \"launchqtcreator.qtDesignerPath\"\n(' + err + ")");
