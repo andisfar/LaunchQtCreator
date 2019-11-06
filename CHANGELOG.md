@@ -2,6 +2,11 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.0.8]
+
+- fixed an issue where QtCreateor failed to launch after setting the path for QtCreator
+- fixed an issue where Qt Designer failed to launch after setting the path for Qt Designer
+
 ## [0.0.7]
 
 - Opens QtCreator or Qt Designer with no files via user selection from a Quick Pick.

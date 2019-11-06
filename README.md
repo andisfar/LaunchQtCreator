@@ -28,11 +28,11 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 - Visual Studio Code
 - QtCreator
 - recommended that Qt frame work is also installed
+- CMake is requred for configuring software projects using CMake
 
 ## Extension Settings
 
 -'launchqtcreator.qtCreatorPath': configure path to use for launching QtCreator
-
 -'launchqtcreator.qtDesignerPath': configure path to use for launching Qt Designer
 
 ## Known Issues
@@ -40,6 +40,11 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 no known issues
 
 ## Release Notes
+
+### 0.0.8
+
+- fixed an issue where QtCreateor failed to launch after setting the path for QtCreator
+- fixed an issue where Qt Designer failed to launch after setting the path for Qt Designer
 
 ### 0.0.7
 
