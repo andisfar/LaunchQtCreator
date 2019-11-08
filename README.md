@@ -44,6 +44,7 @@ no known issues
 ### 0.0.8
 
 - fixed an issue where QtCreateor failed to launch after setting the path for QtCreator
+- fixed an issue where QtCreator was launched twice when opening an item in QtCreator
 - fixed an issue where Qt Designer failed to launch after setting the path for Qt Designer
 
 ### 0.0.7
