@@ -11,9 +11,9 @@ import
     workspace
 } from 'vscode';
 //
-import {LaunchQtCreator, LaunchInQtCreator} from './creator';
+import {LaunchQtCreator, OpenInQtCreator} from './creator';
 //
-import {LaunchQtDesigner, LaunchInQtDesigner} from './designer';
+import {LaunchQtDesigner, OpenInQtDesigner} from './designer';
 
 var path = require("path");
 
@@ -148,7 +148,7 @@ export function activate(context: ExtensionContext) {
         window.withProgress(
         {
             location : ProgressLocation.Notification,
-            title : "Launching " + path.basename(qtFile.fsPath) + " in QtCreator ...",
+            title : "Opening " + path.basename(qtFile.fsPath) + " in QtCreator ...",
             cancellable: false
         }, () =>
         {
@@ -156,7 +156,7 @@ export function activate(context: ExtensionContext) {
             {
                 setTimeout(() =>
                 {
-                    resolve(LaunchInQtCreator(qtFile));
+                    resolve(OpenInQtCreator(qtFile));
                 }, 5000);
             });return p;
         });
@@ -171,7 +171,7 @@ export function activate(context: ExtensionContext) {
         window.withProgress(
         {
             location : ProgressLocation.Notification,
-            title : "Launching " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
+            title : "Opening " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
             cancellable: false
         }, () =>
         {
@@ -179,7 +179,7 @@ export function activate(context: ExtensionContext) {
             {
                 setTimeout(() =>
                 {
-                    resolve(LaunchInQtDesigner(qtFile));
+                    resolve(OpenInQtDesigner(qtFile));
                 }, 2000);
             });return p;
         });
