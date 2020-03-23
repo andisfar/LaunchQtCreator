@@ -2,6 +2,10 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.0.9]
+
+- a dependency was updated for a scurity patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9
+
 ## [0.0.8]
 
 - fixed an issue where QtCreator failed to launch after setting the path for QtCreator

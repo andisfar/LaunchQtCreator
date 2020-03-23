@@ -41,6 +41,10 @@ no known issues
 
 ## Release Notes
 
+### 0.0.9
+
+- a dependency was updated for a scurity patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9
+
 ### 0.0.8
 
 - fixed an issue where QtCreateor failed to launch after setting the path for QtCreator
