@@ -41,6 +41,16 @@ no known issues
 
 ## Release Notes
 
+## 0.1.0
+
+- updated minimalist dependency version based on the following alert from GitHub:
+- CVE-2020-7598
+  high severity
+  Vulnerable versions: < 0.2.1
+  Patched version: 0.2.1
+  minimist before 1.2.2 could be tricked into adding or modifying properties of Object.prototype using a "constructor" or "proto" payload.
+- engines.vscode ^1.39.0 ==>> engines.vscode ^1.43.0 (requires vscode 1.43.0 or later)
+
 ### 0.0.9
 
 - a dependency was updated for a scurity patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9

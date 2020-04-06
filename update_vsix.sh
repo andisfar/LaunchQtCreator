@@ -21,6 +21,6 @@ done
     exit -1
 }|| {
     echo "generating new package: '${new_name}'"
-    vsce package -o ./latest/${new_name}
+    node_modules/vsce/out/vsce package -o ./latest/${new_name}
 }
 exit 0
