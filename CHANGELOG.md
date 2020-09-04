@@ -2,6 +2,10 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.1]
+
+- createing a new vsix package that contains the updated code reflecting the latest merged pull request from dependabot: Bump lodash from 4.17.15 to 4.17.19
+
 ## [0.1.0]
 
 - updated minimalist dependency version based on the following alert from GitHub:
