@@ -7,7 +7,7 @@ old_names=$(ls ./latest/)
 test -d ./Releases || mkdir ./Releases
 
 for name in ${old_names}; do
-    test "./latest/${name}" == "${new_name}" && {
+    test "./latest/${name}" == "./latest/${new_name}" && {
         echo "remove old file with same name..."
         rm -f ${nme}
      } ||{
