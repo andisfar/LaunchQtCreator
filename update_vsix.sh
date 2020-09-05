@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 script=`basename $0`
 # update vsix package and move previous file to Releases
-new_name=$1
 old_names=$(ls ./latest/)
 
 test -d ./Releases || mkdir ./Releases
@@ -12,15 +11,14 @@ for name in ${old_names}; do
         rm -f ${nme}
      } ||{
         echo "move previous file to ./Releases"
-        mv ./latest/${name} ./Releases
+        mv -f ./latest/${name} ./Releases
      }
 done
 
-[ "${new_name}xx" == "xx" ] && {
-    echo "specify new name";
-    exit -1
-}|| {
-    echo "generating new package: '${new_name}'"
-    node_modules/vsce/out/vsce package -o ./latest/${new_name}
-}
+echo "generating new package..."
+vsce package 
+echo "publishing..."
+vsce publish
+echo "move new package into latest..."
+mv *.vsix ./latest/
 exit 0
