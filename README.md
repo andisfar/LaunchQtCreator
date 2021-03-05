@@ -8,7 +8,7 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 - launches QtCreator or Qt Designer from within code with the click of a button
 
-- launch selected file (*.ui, *.qrc, *.pro, CMakeLists.txt) from context menus on
+- launch selected file ( *.ui, *.qrc, *.pro, CMakeLists.txt ) from context menus on
   explorer view or in editor title, or from editor.
 
 - if the path to QtCreator is empty then the user is prompted to
@@ -17,18 +17,18 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 - if the path to Qt Designer is empty then the user is prompted to
   supply the path via a file open dialog
 
-- ui files can be opended directly in QtCreator or Qt Designer (dealers choice)
+- ui files can be opened directly in QtCreator or Qt Designer (dealers choice)
 
 - *.pro, CMakeLists.txt project files can be opened in QtCreator
 
-- *.qrc files can be opend in QtCreator
+- *.qrc files can be opened in QtCreator
 
 ## Requirements
 
 - Visual Studio Code
 - QtCreator
 - recommended that Qt frame work is also installed
-- CMake is requred for configuring software projects using CMake
+- CMake is required for configuring software projects using CMake
 
 ## Extension Settings
 
@@ -43,7 +43,7 @@ no known issues
 
 ## 0.1.1
 
-- createing a new vsix package that contains the updated code reflecting the latest merged pull request from dependabot: Bump lodash from 4.17.15 to 4.17.19
+- creating a new vsix package that contains the updated code reflecting the latest merged pull request from dependabot: Bump lodash from 4.17.15 to 4.17.19
 
 ## 0.1.0
 
@@ -57,23 +57,23 @@ no known issues
 
 ### 0.0.9
 
-- a dependency was updated for a scurity patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9
+- a dependency was updated for a security patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9
 
 ### 0.0.8
 
-- fixed an issue where QtCreateor failed to launch after setting the path for QtCreator
+- fixed an issue where QtCreator failed to launch after setting the path for QtCreator
 - fixed an issue where QtCreator was launched twice when opening an item in QtCreator
 - fixed an issue where Qt Designer failed to launch after setting the path for Qt Designer
 
 ### 0.0.7
 
 - Opens QtCreator or Qt Designer with no files via user selection from a Quick Pick.
-- Added context menus for opening files in QtCreator or Qt Desinger (as applicable),
+- Added context menus for opening files in QtCreator or Qt Designer (as applicable),
   from the explorer, editor title, or editor.
 
 ### 0.0.6
 
-- Changed information messages out with progress messages that disapear after a few seconds.
+- Changed information messages out with progress messages that disappear after a few seconds.
 
 ### 0.0.4
 
@@ -98,8 +98,8 @@ no known issues
 Initial release - added demo.gif
 
 - updated the extension to use async functions and added some 
-  'exception' handling to help discover where failuers mught be
-  happending when the extension is being used
+  'exception' handling to help discover where failures might be
+  happening when the extension is being used
 
 The extension now will prompt for a path to the QtCreator executable with a FileOpen dialog
 
