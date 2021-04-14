@@ -1,6 +1,6 @@
 # launchqtcreator README
 
-QtCreator is very useful for certain tasks! When working on Qt projects, there are things I find Qt Creator invaluable for -just too convenient to use anything else (almost). I often use Vislual Studio Code and QtCreator together when working on c++/gui projects
+QtCreator is very useful for certain tasks! When working on Qt projects, there are things I find Qt Creator invaluable for -just too convenient to use anything else (almost). I often use Visual Studio Code and QtCreator together when working on c++/gui projects
 
 ![Qt Creator Launcher](src/images/selection_tool.gif)
 
@@ -8,7 +8,8 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 - launches QtCreator or Qt Designer from within code with the click of a button
 
-- launch selected file ( *.ui, *.qrc, *.pro, CMakeLists.txt ) from context menus on
+- launch selected file (*.ui,*.qrc, *.pro, CMakeLists.txt) from 
+  context menus on
   explorer view or in editor title, or from editor.
 
 - if the path to QtCreator is empty then the user is prompted to
@@ -17,7 +18,8 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 - if the path to Qt Designer is empty then the user is prompted to
   supply the path via a file open dialog
 
-- ui files can be opened directly in QtCreator or Qt Designer (dealers choice)
+- ui files can be opened directly in QtCreator or Qt Designer 
+  (dealers choice)
 
 - *.pro, CMakeLists.txt project files can be opened in QtCreator
 
@@ -40,6 +42,13 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 no known issues
 
 ## Release Notes
+
+## 0.1.2
+
+- fixed spelling errors in README.md (this document)
+
+- package dependency updated y18n (The bare-bones
+  internationalization library used by yargs.) from 4.0.0 to 4.0.1
 
 ## 0.1.1
 

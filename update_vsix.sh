@@ -16,7 +16,7 @@ for name in ${old_names}; do
 done
 
 echo "generating new package..."
-vsce package 
+vsce package
 echo "publishing..."
 vsce publish
 echo "move new package into latest..."
