@@ -43,6 +43,33 @@ no known issues
 
 ## Release Notes
 
+## 0.1.3 - Security update
+
+- applied a security patch based on input
+  from dependabot:
+  CVE-2021-23358 (high severity)
+
+  Vulnerable versions: >= 1.3.2, < 1.12.1
+  Patched version: 1.12.1
+  The package underscore from 1.13.0-0 and before 1.13.0-2, from 1.3.2 and
+  before 1.12.1 are vulnerable to Arbitrary Code Execution via the template
+  function, particularly when a variable property is passed as an argument
+  as it is not sanitized.
+
+- applied a security patch based on input from dependabot:
+  CVE-2021-23337 (high severity)
+  Vulnerable versions: < 4.17.21
+  Patched version: 4.17.21
+  lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.
+
+- Regular Expression Denial of Service (ReDoS) Affecting eslint package, versions >=1.4.0 <4.18.2
+  Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS).
+  This can cause an impact of about 10 seconds matching time for data 100k characters long.
+  Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS).
+  This can cause an impact of about 10 seconds matching time for data 100k characters long.
+  Upgrade eslint to version 4.18.2 or higher.
+  (info retrieved from: https://snyk.io/vuln/npm:eslint:20180222)
+
 ## 0.1.2
 
 - fixed spelling errors in README.md (this document)

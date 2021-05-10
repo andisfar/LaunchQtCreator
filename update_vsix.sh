@@ -17,8 +17,8 @@ done
 
 echo "generating new package..."
 vsce package
-echo "publishing..."
-vsce publish
+# echo "publishing..."
+cat ../.extensions | vsce publish
 echo "move new package into latest..."
 mv *.vsix ./latest/
 exit 0
