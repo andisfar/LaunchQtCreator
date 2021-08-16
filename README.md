@@ -43,6 +43,16 @@ no known issues
 
 ## Release Notes
 
+## 0.1.6
+
+- Bump path-parse from 1.0.6 to 1.0.7.
+  This automated pull request fixes a security vulnerability. Bumps path-parse from 1.0.6 to 1.0.7.
+  @dependabot Bump path-parse from 1.0.6 to 1.0.7 [fc8dc88].
+
+- Updated vsix package published.
+
+- previously unlisted security updates were posted in version 0.1.4 and0.1.5 prompting previously released vsix packages.
+
 ## 0.1.3 - Security update
 
 - applied a security patch based on input

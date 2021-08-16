@@ -2,6 +2,14 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.6]
+
+- Bump path-parse from 1.0.6 to 1.0.7.
+  This automated pull request fixes a security vulnerability. Bumps path-parse from 1.0.6 to 1.0.7.
+  @dependabot Bump path-parse from 1.0.6 to 1.0.7 [fc8dc88].
+
+- Updated vsix package published.
+
 ## [0.1.4]
 
 - fixed formatting issue in README.md and CHANGELOG.md

@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
