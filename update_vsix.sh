@@ -19,8 +19,8 @@ echo -n "generating new package..."
 vsce package &> /dev/null
 echo "done"
 
-echo -n "publishing..."
-cat ../.extensions | vsce publish &> /dev/null
+echo "publishing..."
+cat ../.extensions | vsce publish 
 echo "done"
 
 echo -n "move new package into latest..."
