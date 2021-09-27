@@ -8,7 +8,7 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 - launches QtCreator or Qt Designer from within code with the click of a button
 
-- launch selected file (*.ui,*.qrc, *.pro, CMakeLists.txt) from 
+- launch selected file (*.ui,*.qrc, *.pro, CMakeLists.txt) from
   context menus on
   explorer view or in editor title, or from editor.
 
@@ -18,7 +18,7 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 - if the path to Qt Designer is empty then the user is prompted to
   supply the path via a file open dialog
 
-- ui files can be opened directly in QtCreator or Qt Designer 
+- ui files can be opened directly in QtCreator or Qt Designer
   (dealers choice)
 
 - *.pro, CMakeLists.txt project files can be opened in QtCreator
@@ -42,6 +42,10 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 no known issues
 
 ## Release Notes
+
+## 0.1.8
+
+- updated ansi-regex to common version of at least 5.0.1
 
 ## 0.1.7
 
@@ -90,7 +94,7 @@ no known issues
   Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS).
   This can cause an impact of about 10 seconds matching time for data 100k characters long.
   Upgrade eslint to version 4.18.2 or higher.
-  (info retrieved from: https://snyk.io/vuln/npm:eslint:20180222)
+  (info retrieved from: <https://snyk.io/vuln/npm:eslint:20180222>)
 
 ## 0.1.2
 
@@ -139,7 +143,7 @@ no known issues
 
 ### 0.0.3
 
-- added command to 'open in' for QtCreator: *.pro, *.ui, *.qrc, CMakeLists.txt files only
+- added command to 'open in' for QtCreator: *.pro,*.ui, *.qrc, CMakeLists.txt files only
 - added command to 'open in' for Qt Designer: *.ui files only
 - commands are available on the selected file in the explorer window context menu
 - commands are available on the open text editor window context menu
@@ -155,7 +159,7 @@ no known issues
 
 Initial release - added demo.gif
 
-- updated the extension to use async functions and added some 
+- updated the extension to use async functions and added some
   'exception' handling to help discover where failures might be
   happening when the extension is being used
 

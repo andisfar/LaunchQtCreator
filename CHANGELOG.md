@@ -2,6 +2,10 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.8]
+
+- updated ansi-regex to common version of at least 5.0.1
+
 ## [0.1.7]
 
 - fixed some spelling errors and markdown formatting errors in read me documents
