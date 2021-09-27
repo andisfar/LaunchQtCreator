@@ -43,6 +43,18 @@ no known issues
 
 ## Release Notes
 
+## 0.1.7
+
+- fixed some spelling errors and markdown formatting errors in read me documents
+- updated various dependencies to latest npm packages via 'npm update' (see changes in package-lock.json and package.json)
+- Bump nth-check from 2.0.0 to 2.0.1, change required version of nth-check in css-select to ^2.0.1 as well
+  @dependabot suggested the update (minus the css-select required version) and sited release notes for nth-check:
+  v2.0.1 fixes:
+  - Replace regex with hand-rolled parser for nth-expressions (#9) 9894c1d
+  V2.0.1 internal:
+  - chore(ci): Use Github Actions, Dependabot(#10) e02b4dd
+  - Bump dependencies
+
 ## 0.1.6
 
 - Bump path-parse from 1.0.6 to 1.0.7.

@@ -2,6 +2,18 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.7]
+
+- fixed some spelling errors and markdown formatting errors in read me documents
+- updated various dependencies to latest npm packages via 'npm update' (see changes in package-lock.json and package.json)
+- Bump nth-check from 2.0.0 to 2.0.1, change required version of nth-check in css-select to ^2.0.1 as well
+  @dependabot suggested the update (minus the css-select required version) and sited release notes for nth-check:
+  v2.0.1 fixes:
+  - Replace regex with hand-rolled parser for nth-expressions (#9) 9894c1d
+  V2.0.1 internal:
+  - chore(ci): Use Github Actions, Dependabot(#10) e02b4dd
+  - Bump dependencies
+
 ## [0.1.6]
 
 - Bump path-parse from 1.0.6 to 1.0.7.
@@ -22,9 +34,9 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
   Vulnerable versions: >= 1.3.2, < 1.12.1
   Patched version: 1.12.1
-  The package underscore from 1.13.0-0 and before 1.13.0-2, from 1.3.2 and 
-  before 1.12.1 are vulnerable to Arbitrary Code Execution via the template 
-  function, particularly when a variable property is passed as an argument 
+  The package underscore from 1.13.0-0 and before 1.13.0-2, from 1.3.2 and
+  before 1.12.1 are vulnerable to Arbitrary Code Execution via the template
+  function, particularly when a variable property is passed as an argument
   as it is not sanitized.
 
 - applied a security patch based on input from dependabot:
@@ -38,11 +50,11 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
   This can cause an impact of about 10 seconds matching time for data 100k characters long.
   Affected versions of this package are vulnerable to Regular Expression Denial of Service (ReDoS).
   This can cause an impact of about 10 seconds matching time for data 100k characters long.
-  (info retrieved from: https://snyk.io/vuln/npm:eslint:20180222)
+  (info retrieved from: <https://snyk.io/vuln/npm:eslint:20180222>)
 
 ## [0.1.1]
 
-- createing a new vsix package that contains the updated code reflecting the latest merged pull request from dependabot: Bump lodash from 4.17.15 to 4.17.19
+- creating a new vsix package that contains the updated code reflecting the latest merged pull request from dependabot: Bump lodash from 4.17.15 to 4.17.19
 
 ## [0.1.0]
 
@@ -56,7 +68,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
 ## [0.0.9]
 
-- a dependency was updated for a scurity patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9
+- a dependency was updated for a security patch (acorn 7.1.0 -> 7.1.1), so Launch QtCreator has been bumped to 0.0.9
 
 ## [0.0.8]
 
@@ -80,7 +92,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
 ## [0.0.3]
 
-- added command to 'open in' for QtCreator: *.pro, *.ui, *.qrc, CMakeLists.txt files only
+- added command to 'open in' for QtCreator: *.pro,*.ui, *.qrc, CMakeLists.txt files only
 - added command to 'open in' for Qt Designer: *.ui files only
 - commands are available on the selected file in the explorer window context menu
 - commands are available on the open text editor window context menu
@@ -92,7 +104,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
   - get the path to QtCreator, and then launch QtCreator
   - launch QtCreator
 
-- updated the extension to use async functions and added some 
+- updated the extension to use async functions and added some
   'exception' handling to help discover where failuers mught be
   happending when the extension is being used
 

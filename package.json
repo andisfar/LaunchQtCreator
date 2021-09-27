@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -116,7 +116,7 @@
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^10.17.60",
 		"@types/vscode": "^1.56.0",
-		"glob": "^7.1.7",
+		"glob": "^7.2.0",
 		"mocha": "^6.2.3",
 		"tslint": "^5.20.1",
 		"typescript": "^3.9.10",
@@ -125,6 +125,6 @@
 	"dependencies": {
 		"es6": "0.0.7",
 		"eslint": "^7.32.0",
-		"vsce": "^1.96.1"
+		"vsce": "^1.100.0"
 	}
 }
