@@ -2,6 +2,10 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.10]
+
+- Bump minimist from 1.2.5 to 1.2.6
+
 ## [0.1.8]
 
 - updated ansi-regex to common version of at least 5.0.1
