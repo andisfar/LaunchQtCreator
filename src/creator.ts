@@ -30,9 +30,9 @@ export async function LaunchQtCreator() : Promise<boolean> {
         await getQtCreatorPath().then(async path =>
         {
             qtcreator = path;
-            console.log('successfully called getQtCreatorPath: result [' + qtcreator + ']');
+            console.log(`successfully called getQtCreatorPath: result [${qtcreator}]`);
             await doLaunchQtCreator(qtcreator).then(()=>{
-                console.log('called doLaunchQtDesigner with path ' + qtcreator);
+                console.log(`called doLaunchQtDesigner with path ${qtcreator}`);
                 return_value = true;
             }).then(undefined, ()=>{
                 return_value = false;
@@ -44,7 +44,7 @@ export async function LaunchQtCreator() : Promise<boolean> {
     else
     {
         doLaunchQtCreator(qtcreator).then(()=>{
-            console.log('called doLaunchQtCreator with path ' + qtcreator);
+            console.log(`called doLaunchQtCreator with path ${qtcreator}`);
             return_value = true;
         }).then(undefined, ()=>{
             return_value = false;
@@ -53,7 +53,7 @@ export async function LaunchQtCreator() : Promise<boolean> {
 	return return_value;
 }
 
-export async function OpenInQtCreator(qtFile: Uri): Promise<boolean> 
+export async function OpenInQtCreator(qtFile: Uri): Promise<boolean>
 {
     let return_value: boolean = false;
     ValidCreatorFiles(qtFile.fsPath).then(valid_file =>
@@ -87,9 +87,7 @@ export async function OpenInQtCreator(qtFile: Uri): Promise<boolean>
             {
                 doOpenInQtCreator({ qtcreator, qtfile: qtFile }).then(() =>
                 {
-                    console.log('called doLaunchInQtCreator with path ' +
-                        qtcreator +
-                        " " + qtFile.fsPath);
+                    console.log(`called doLaunchInQtCreator with path '${qtcreator}' '${qtFile.fsPath}'`);
                     return_value = true;
                 }).then(undefined, () =>
                 {
@@ -119,37 +117,37 @@ export async function getQtCreatorPath() : Promise<string>
     settings.update('qtCreatorPath', creatorPath, ConfigurationTarget.Global).then(
     undefined, err =>
     {
-        window.showErrorMessage('unable to set \"launchqtcreator.qtCreatorPath\"\n(' + err + ")");
+        window.showErrorMessage(`unable to set \"launchqtcreator.qtCreatorPath\"\n(${err})`);
     });
     return creatorPath;
 }
 
 export async function doLaunchQtCreator(qtcreator: string)
 {
-    await cp.exec(qtcreator + " -color teal", (err: string, stdout: string) =>
+    await cp.exec(`${qtcreator} -color teal`, (err: string, stdout: string) =>
     {
         if (err)
         {
-	    console.log('error: ' + err);
+	    console.log(`error: ${err}`);
 	}
         if (stdout)
         {
-	    console.log('stdout: ' + stdout);
+	    console.log(`stdout: ${stdout}`);
         }
 	});
 }
 
 export async function doOpenInQtCreator({ qtcreator, qtfile }: { qtcreator: string; qtfile: Uri; })
 {
-    await cp.exec(qtcreator + " -color teal " + qtfile.fsPath, (err: string, stdout: string) =>
+    await cp.exec(`${qtcreator} -color teal "${qtfile.fsPath}"`, (err: string, stdout: string) =>
     {
         if (err)
         {
-            console.log('error: ' + err);
+            console.log(`error: ${err}`);
         }
         if (stdout)
         {
-            console.log('stdout: ' + stdout);
+            console.log(`stdout: ${stdout}`);
         }
 	});
 }
