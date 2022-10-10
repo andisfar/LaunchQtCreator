@@ -43,6 +43,12 @@ no known issues
 
 ## Release Notes
 
+## 0.1.11
+
+- @dependabot dependabot bot deleted the dependabot/npm_and_yarn/npm-8.11.0
+- addressed issue #14, "spaces in path file path makes designer fail to load"
+-     this fix has only been tested on one machine: wrap file names in double quotes
+
 ## 0.1.10
 
 - Bump minimist from 1.2.5 to 1.2.6
