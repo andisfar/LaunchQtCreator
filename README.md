@@ -43,6 +43,11 @@ no known issues
 
 ## Release Notes
 
+## 0.1.12
+
+- @dependbot dependabot/npm_and_yarn/minimatch-and-mocha-3.1.2
+- Bumps minimatch to 3.1.2 and updates ancestor dependency mocha. These dependencies need to be updated together.
+
 ## 0.1.11
 
 - @dependabot dependabot bot deleted the dependabot/npm_and_yarn/npm-8.11.0
