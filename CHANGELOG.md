@@ -2,6 +2,11 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.13]
+
+- NPM IP package incorrectly identifies some private IP addresses as public #16
+- update npm ip package to mimimum patched version 2.0.1
+
 ## [0.1.10]
 
 - Bump minimist from 1.2.5 to 1.2.6

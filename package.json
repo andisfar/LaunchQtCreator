@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -123,10 +123,11 @@
 		"vscode-test": "^1.6.1"
 	},
 	"dependencies": {
+		"@vscode/vsce": "^2.20.1",
 		"ansi-regex": "^5.0.1",
 		"es6": "0.0.7",
 		"eslint": "^7.32.0",
-		"npm": "^8.11.0",
-		"vsce": "^2.7.0"
+		"npm": "^9.8.1",
+		"vsce": "^2.15.0"
 	}
 }
