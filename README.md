@@ -43,6 +43,10 @@ no known issues
 
 ## Release Notes
 
+** 0.1.13
+
+- @dependbot recommended updating npm package ip to 2.0.1 to include  patch affecting identification of private addresses
+
 ## 0.1.12
 
 - @dependbot dependabot/npm_and_yarn/minimatch-and-mocha-3.1.2
