@@ -123,10 +123,11 @@
 		"vscode-test": "^1.6.1"
 	},
 	"dependencies": {
-		"@vscode/vsce": "^2.20.1",
+		"@vscode/vsce": "^2.24.0",
 		"ansi-regex": "^5.0.1",
 		"es6": "0.0.7",
 		"eslint": "^7.32.0",
+		"ip": "^2.0.1",
 		"npm": "^9.8.1",
 		"vsce": "^2.15.0"
 	}
