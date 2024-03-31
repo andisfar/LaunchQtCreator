@@ -43,7 +43,11 @@ no known issues
 
 ## Release Notes
 
-** 0.1.13
+## 0.1.14
+
+- @dependbot xml2js is vulnerable to prototype pollution #9, update to 0.5.0
+
+## 0.1.13
 
 - @dependbot recommended updating npm package ip to 2.0.1 to include  patch affecting identification of private addresses
 

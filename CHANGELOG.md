@@ -2,6 +2,10 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.14]
+
+- @dependbot xml2js is vulnerable to prototype pollution #9, update to 0.5.0
+
 ## [0.1.13]
 
 - NPM IP package incorrectly identifies some private IP addresses as public #16
