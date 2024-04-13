@@ -21,10 +21,6 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:launchqtcreator.launchqtselection",
-		"onCommand:launchqtcreator.launchqtcreator",
-		"onCommand:launchqtcreator.openinqtcreator",
-		"onCommand:launchqtcreator.openinqtdesigner",
 		"workspaceContains:*.pro",
 		"workspaceContains:CMakeLists.txt",
 		"workspaceContains:*.ui"
