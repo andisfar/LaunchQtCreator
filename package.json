@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.1.14",
+	"version": "0.1.15",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -21,10 +21,6 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:launchqtcreator.launchqtselection",
-		"onCommand:launchqtcreator.launchqtcreator",
-		"onCommand:launchqtcreator.openinqtcreator",
-		"onCommand:launchqtcreator.openinqtdesigner",
 		"workspaceContains:*.pro",
 		"workspaceContains:CMakeLists.txt",
 		"workspaceContains:*.ui"

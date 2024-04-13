@@ -43,6 +43,30 @@ no known issues
 
 ## Release Notes
 
+## 0.1.15
+
+- @dependabot/npm_and_yarn/multi-7633470765:
+  Bump tar and npm
+  Removes [tar](https://github.com/isaacs/node-tar). It's no longer used after updating ancestor dependency [npm](https://github.com/npm/cli). 
+  These dependencies need to be updated together. 
+  - Removes `tar`
+  - Updates `npm` from 9.9.3 to 10.5.2
+  - [Release notes](https://github.com/npm/cli/releases)
+  - [Changelog](https://github.com/npm/cli/blob/latest/CHANGELOG.md)
+  - [Commits](npm/cli@v9.9.3...v10.5.2)
+
+  ---
+  updated-dependencies:
+  - dependency-name: tar
+    dependency-type: indirect
+  - dependency-name: npm
+    dependency-type: direct:production
+  ...
+
+  Signed-off-by: dependabot[bot] <support@github.com>
+
+  Extension is now supported from Microsoft Visual Studio Code >= 1.75
+
 ## 0.1.14
 
 - @dependbot xml2js is vulnerable to prototype pollution #9, update to 0.5.0
