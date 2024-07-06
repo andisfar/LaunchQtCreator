@@ -2,6 +2,22 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.16]
+
+- Bumps braces from 3.0.2 to 3.0.3.
+  - Commits
+    - 74b2db2 3.0.3
+    - 88f1429 update eslint. lint, fix unit tests.
+    - 415d660 Snyk js braces 6838727 (#40)
+    - 190510f fix tests, skip 1 test in test/braces.expand
+    - 716eb9f readme bump
+    - a5851e5 Merge pull request #37 from coderaiser/fix/vulnerability
+    - 2092bd1 feature: braces: add maxSymbols (https://github.com/micromatch/braces/issues/...)
+    - 9f5b4cf fix: vulnerability (https://security.snyk.io/vuln/SNYK-JS-BRACES-6838727)
+    - 98414f9 remove funding file
+    - 665ab5d update keepEscaping doc (#27)
+    - Additional commits viewable in [compare view](https://github.com/micromatch/braces/compare/3.0.2...3.0.3)
+
 ## [0.1.15]
 
 - @dependabot/npm_and_yarn/multi-7633470765:
