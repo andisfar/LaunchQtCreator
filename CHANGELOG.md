@@ -2,6 +2,16 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.17]
+
+- Sourced from cross-spawn's changelog:[url](https://github.com/moxystudio/node-cross-spawn/blob/master/CHANGELOG.md)
+- 7.0.6 (2024-11-18) Bug Fixes
+  - update cross-spawn version to 7.0.5 in package-lock.json (f700743)[url](https://github.com/moxystudio/node-cross-spawn/commit/f700743918d901eff92960e15a8dd68f87bd4176)
+- 7.0.5 (2024-11-07) Bug Fixes
+  - fix escaping bug introduced by backtracking (640d391)[url](https://github.com/moxystudio/node-cross-spawn/commit/640d391fde65388548601d95abedccc12943374f)
+- 7.0.4 (2024-11-07) Bug Fixes
+  - disable regexp backtracking (#160)[url](https://redirect.github.com/moxystudio/node-cross-spawn/issues/160) (5ff3a07)[url](https://github.com/moxystudio/node-cross-spawn/commit/5ff3a07d9add449021d806e45c4168203aa833ff)
+
 ## [0.1.16]
 
 - Bumps braces from 3.0.2 to 3.0.3.
