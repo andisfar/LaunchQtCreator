@@ -27,6 +27,16 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"commandPallet": [
+				{
+					"command": "launchqtcreator.openinqtcreator",
+					"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadOnly && !inCompositEditor"
+				},
+				{
+					"command": "launchqtcreator.openinqtdesigner",
+					"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadOnly && !inCompositEditor"
+				}
+		],
 		"menus": {
 			"explorer/context": [
 				{
@@ -74,7 +84,12 @@
 			},
 			{
 				"command": "launchqtcreator.openinqtcreator",
-				"title": "Open in Qt Creator"
+				"title": "Open in Qt Creator",
+				"category": "Open document",
+				"icon":{
+					"light": "resources/qt.ico",
+					"dark": "resources/qt.ico"
+				}
 			},
 			{
 				"command": "launchqtcreator.openinqtdesigner",
@@ -122,6 +137,7 @@
 		"@vscode/vsce": "^2.32.0",
 		"ansi-regex": "^5.0.1",
 		"es6": "0.0.7",
-		"eslint": "^7.32.0"
+		"eslint": "^7.32.0",
+		"tsc": "^2.0.4"
 	}
 }
