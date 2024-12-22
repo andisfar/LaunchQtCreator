@@ -3,7 +3,7 @@
 	"displayName": "Launch Qt Creator",
 	"description": "Launch Qt Creator",
 	"icon": "resources/qt.png",
-	"version": "0.1.17",
+	"version": "0.1.18",
 	"license": "MIT",
 	"publisher": "OralShaneCurtis-6510",
 	"author": {
@@ -30,11 +30,11 @@
 		"commandPallet": [
 				{
 					"command": "launchqtcreator.openinqtcreator",
-					"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadOnly && !inCompositEditor"
+					"when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadOnly && !inCompositEditor"
+					"when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
 				}
 		],
 		"menus": {
@@ -85,7 +85,6 @@
 			{
 				"command": "launchqtcreator.openinqtcreator",
 				"title": "Open in Qt Creator",
-				"category": "Open document",
 				"icon":{
 					"light": "resources/qt.ico",
 					"dark": "resources/qt.ico"
@@ -93,7 +92,11 @@
 			},
 			{
 				"command": "launchqtcreator.openinqtdesigner",
-				"title": "Open in Qt Designer"
+				"title": "Open in Qt Designer",
+				"icon":{
+					"light": "resources/qt.ico",
+					"dark": "resources/qt.ico"
+				}
 			}
 		],
 		"configuration": [

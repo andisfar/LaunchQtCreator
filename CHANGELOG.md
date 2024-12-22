@@ -2,6 +2,16 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.18]
+
+- "Open in Designer" fails when executed from palette #24:
+  
+  - Open from Explorer context menu still works (both designer and qtcreator)
+  - Open from Editor Window context menu still works (both designer and qtcreator)
+  - from the command palette (both designer and qtcreator), no longer supplied a valid URI object from the active editor window.
+    to ensure that the command palette still functions the extension now checks for a valid URI object and an active editor window,
+    which must have a document type open that the extention allows to be opened in either desiger or qtcreator
+
 ## [0.1.17]
 
 - Sourced from cross-spawn's changelog:[url](https://github.com/moxystudio/node-cross-spawn/blob/master/CHANGELOG.md)
