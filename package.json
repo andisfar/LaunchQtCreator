@@ -85,7 +85,6 @@
 			{
 				"command": "launchqtcreator.openinqtcreator",
 				"title": "Open in Qt Creator",
-
 				"icon":{
 					"light": "resources/qt.ico",
 					"dark": "resources/qt.ico"
@@ -93,7 +92,11 @@
 			},
 			{
 				"command": "launchqtcreator.openinqtdesigner",
-				"title": "Open in Qt Designer"
+				"title": "Open in Qt Designer",
+				"icon":{
+					"light": "resources/qt.ico",
+					"dark": "resources/qt.ico"
+				}
 			}
 		],
 		"configuration": [
