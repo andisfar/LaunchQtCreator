@@ -30,11 +30,11 @@
 		"commandPallet": [
 				{
 					"command": "launchqtcreator.openinqtcreator",
-					"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadOnly && !inCompositEditor"
+					"when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
 				},
 				{
 					"command": "launchqtcreator.openinqtdesigner",
-					"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadOnly && !inCompositEditor"
+					"when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
 				}
 		],
 		"menus": {
@@ -85,7 +85,7 @@
 			{
 				"command": "launchqtcreator.openinqtcreator",
 				"title": "Open in Qt Creator",
-				"category": "Open document",
+
 				"icon":{
 					"light": "resources/qt.ico",
 					"dark": "resources/qt.ico"
