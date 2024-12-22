@@ -15,7 +15,7 @@ vsce package &> /dev/null
 echo "done"
 
 echo "publishing..."
-cat ../.extensions #| vsce publish
+cat ../.extensions | vsce publish
 echo "done"
 
 echo -n "move new package into latest..."
