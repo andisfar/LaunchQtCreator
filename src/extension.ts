@@ -163,29 +163,34 @@ export function activate(context: ExtensionContext) {
     };
     context.subscriptions.push(commands.registerCommand(command, commandInHandler));
 
-    // command to open a file in Qt Designer:
-    // QtCreator Form files (*.ui)
-    command = 'launchqtcreator.openinqtdesigner';
-    commandInHandler = (qtFile:Uri) =>
-    {
-        window.withProgress(
+ // command to open a file in Qt Designer:
+// QtCreator Form files (*.ui)
+command = 'launchqtcreator.openinqtdesigner';
+commandInHandler = (qtFile: Uri) => {
+    if (!qtFile) {
+        if (window.activeTextEditor) {
+            qtFile = window.activeTextEditor.document.uri;
+        } else {
+            window.showErrorMessage("No active file to open in Qt Designer.");
+            return Promise.resolve(false);
+        }
+    }
+    return window.withProgress(
         {
-            location : ProgressLocation.Notification,
-            title : "Opening " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
+            location: ProgressLocation.Notification,
+            title: "Opening " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
             cancellable: false
-        }, () =>
-        {
-            var p = new Promise<boolean>(resolve=>
-            {
-                setTimeout(() =>
-                {
+        },
+        () => {
+            return new Promise<boolean>(resolve => {
+                setTimeout(() => {
                     resolve(OpenInQtDesigner(qtFile));
                 }, 2000);
-            });return p;
-        });
-    };
-    context.subscriptions.push(commands.registerCommand(command, commandInHandler));
-
+            });
+        }
+    );
+};
+context.subscriptions.push(commands.registerCommand(command, commandInHandler));
     // Create a statusbar item
     MakeLaunchQtSelectionStatusbarItem();
 }
@@ -198,7 +203,7 @@ function MakeLaunchQtSelectionStatusbarItem() : any {
         item.show();
         console.log('created statusbar item \"Qt Tool Selection\"');
     }
-    catch (error) {
+    catch (error: any) {
         console.log('failed to create statusbar item \"Qt Tool Selection\"');
         window.showErrorMessage(error);
     }
