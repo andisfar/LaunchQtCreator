@@ -2,6 +2,29 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.19]
+
+- Extension now displays activation message to include version
+- CVE-2025-22150 Moderate severity
+
+  - undici  Version >= 6.0.0< 6.21.1 Upgrade to ~> 6.21.1
+  - Defined in yarn.lock
+
+- Impact
+  - Undici fetch() uses Math.random() to choose the boundary for a multipart/form-data request. It is known that the output of Math.random() can be predicted if several of its generated values are known.
+  If there is a mechanism in an app that sends multipart requests to an attacker-controlled website, they can use this to leak the necessary values. Therefore, An attacker can tamper with the requests going to the backend APIs if certain conditions are met.
+
+  - Patches
+    - This is fixed in 5.28.5; 6.21.1; 7.2.3.
+
+    - Workarounds
+      - Do not issue multipart requests to attacker controlled servers.
+
+  - References
+  
+  - <https://hackerone.com/reports/2913312>
+  - <https://blog.securityevaluators.com/hacking-the-javascript-lottery-80cc437e3b7f>
+
 ## [0.1.18]
 
 - "Open in Designer" fails when executed from palette #24:
