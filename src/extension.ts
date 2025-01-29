@@ -24,6 +24,9 @@ export function ValidCreatorFiles(file: string): boolean {
 }
 
 export function activate(context: ExtensionContext) {
+    const pj = context.extension.packageJSON
+    let version:string = pj.version
+    window.showInformationMessage("[" + version + "] <Lanch Qt Createor> Activated!")
     // command to launch Qt Tool Selection
 	let command:string = 'launchqtcreator.launchqtselection';
     let commandHandler = () =>

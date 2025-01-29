@@ -43,3 +43,4 @@ out
 .vscode-test
 Releases
 .extensions
+tsconfig.tsbuildinfo
