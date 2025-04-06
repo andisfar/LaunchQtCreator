@@ -44,10 +44,15 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 ## 0.1.20
 
   -- Bumps the npm_and_yarn group with 1 update in the / directory: tar-fs.
+
   -- Updates tar-fs from 2.1.1 to 2.1.2
+
   -- Commits
+
   -- d97731b 2.1.2
+
   -- fd1634e symlink tweak from main
+
   -- See full diff in [compare](https://github.com/mafintosh/tar-fs/compare/v2.1.1...v2.1.2)
 
 ## 0.1.19
