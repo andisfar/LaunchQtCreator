@@ -2,6 +2,15 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.20]
+
+- Bumps the npm_and_yarn group with 1 update in the / directory: tar-fs.
+- Updates tar-fs from 2.1.1 to 2.1.2
+- Commits
+- d97731b 2.1.2
+- fd1634e symlink tweak from main
+- See full diff in [compare](https://github.com/mafintosh/tar-fs/compare/v2.1.1...v2.1.2)
+
 ## [0.1.19]
 
 - Extension now displays activation message to include version
@@ -33,7 +42,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
   - Open from Editor Window context menu still works (both designer and qtcreator)
   - from the command palette (both designer and qtcreator), no longer supplied a valid URI object from the active editor window.
     to ensure that the command palette still functions the extension now checks for a valid URI object and an active editor window,
-    which must have a document type open that the extention allows to be opened in either desiger or qtcreator
+    which must have a document type open that the extension allows to be opened in either designer or qtcreator
 
 ## [0.1.17]
 
@@ -55,8 +64,8 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
     - 190510f fix tests, skip 1 test in test/braces.expand
     - 716eb9f readme bump
     - a5851e5 Merge pull request #37 from coderaiser/fix/vulnerability
-    - 2092bd1 feature: braces: add maxSymbols (https://github.com/micromatch/braces/issues/...)
-    - 9f5b4cf fix: vulnerability (https://security.snyk.io/vuln/SNYK-JS-BRACES-6838727)
+    - 2092bd1 feature: braces: add [maxSymbols](https://github.com/micromatch/braces/issues/...)
+    - 9f5b4cf fix: [vulnerability](https://security.snyk.io/vuln/SNYK-JS-BRACES-6838727)
     - 98414f9 remove funding file
     - 665ab5d update keepEscaping doc (#27)
     - Additional commits viewable in [compare view](https://github.com/micromatch/braces/compare/3.0.2...3.0.3)
@@ -65,8 +74,8 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
 - @dependabot/npm_and_yarn/multi-7633470765:
   Bump tar and npm
-  Removes [tar](https://github.com/isaacs/node-tar). It's no longer used after updating ancestor dependency [npm](https://github.com/npm/cli). 
-  These dependencies need to be updated together. 
+  Removes [tar](https://github.com/isaacs/node-tar). It's no longer used after updating ancestor dependency [npm](https://github.com/npm/cli).
+  These dependencies need to be updated together.
   - Removes `tar`
   - Updates `npm` from 9.9.3 to 10.5.2
   - [Release notes](https://github.com/npm/cli/releases)
@@ -179,7 +188,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 ## [0.0.7]
 
 - Opens QtCreator or Qt Designer with no files via user selection from a Quick Pick.
-- Added context menus for opening files in QtCreator or Qt Desinger (as applicable),
+- Added context menus for opening files in QtCreator or Qt Designer (as applicable),
   from the explorer, editor title, or editor.
 
 ## [0.0.6]
