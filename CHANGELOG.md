@@ -4,6 +4,24 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
 ## [0.1.21]
 
+  -- Transitive dependency brace-expansion 1.1.11 is introduced via
+      @vscode/vsce 2.32.0  ...  brace-expansion 1.1.11
+      eslint 7.32.0  ...  brace-expansion 1.1.11
+      glob 7.2.3  ...  brace-expansion 1.1.11
+      tslint 5.20.1  ...  brace-expansion 1.1.11
+      vscode-test 1.6.1  ...  brace-expansion 1.1.11
+  
+  -- Package                 Affected versions     Patched version
+  -- brace-expansion (npm)   >= 1.0.0, <= 1.1.11   1.1.12
+
+  -- A vulnerability was found in juliangruber brace-expansion up to 1.1.11/2.0.1/3.0.0/4.0.0. It has been rated as problematic.
+     Affected by this issue is the function expand of the file index.js. The manipulation leads to inefficient regular expression complexity.
+     The attack may be launched remotely. The complexity of an attack is rather high. The exploitation is known to be difficult.
+     The exploit has been disclosed to the public and may be used. Upgrading to version 1.1.12, 2.0.2, 3.0.1 and 4.0.1 is able to address this issue.
+     The name of the patch is a5b98a4f30d7813266b221435e1eaaf25a1b0ac5. It is recommended to upgrade the affected component.
+
+==========
+
 - Bumps the npm_and_yarn group with 1 update in the / directory: tar-fs.
 - Updates tar-fs from 2.1.2 to 2.1.3
 - Commits
