@@ -2,6 +2,13 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.1.21]
+
+- Bumps the npm_and_yarn group with 1 update in the / directory: tar-fs.
+- Updates tar-fs from 2.1.2 to 2.1.3
+- Commits
+  - See full diff in compare [view](https://github.com/mafintosh/tar-fs/commits)
+
 ## [0.1.20]
 
 - Bumps the npm_and_yarn group with 1 update in the / directory: tar-fs.
