@@ -41,6 +41,52 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
+## 0.1.22
+
+### Bumps the npm_and_yarn group with 1 update in the / directory: tmp.
+
+Updates tmp from 0.2.1 to 0.2.5
+
+Changelog
+Sourced from tmp's changelog.
+
+v0.2.2 (2024-02-28)
+
+🐛 Bug Fix
+
+- Closes #268: Revert "fix #246: remove any double quotes or single quotes… (@​mbargiel)
+
+📝 Documentation
+
+- Closes #266: move paragraph on graceful cleanup to the head of the documentation (@​silkentrance)
+
+Committers: 5
+
+- Carsten Klein (@​silkentrance)
+- Dave Nicolson (@​dnicolson)
+- KARASZI István (@​raszi)
+- Maxime Bargiel (@​mbargiel)
+- @​robertoaceves
+
+### Bumps the npm_and_yarn group with 1 update in the / directory: form-data.
+
+Updates form-data from 4.0.1 to 4.0.4
+
+Changelog
+Sourced from form-data's changelog.
+
+- v4.0.4 - 2025-07-16
+
+Commits
+
+- [meta] add auto-changelog 811f682
+- [Tests] handle predict-v8-randomness failures in node < 17 and node > 23 1d11a76
+- [Fix] Switch to using crypto random for boundary values 3d17230
+- [Tests] fix linting errors 5e34080
+- [meta] actually ensure the readme backup isn’t published 316c82b
+- [Dev Deps] update @ljharb/eslint-config 58c25d7
+- [meta] fix readme capitalization 2300ca1
+
 ## 0.1.21
 
   -- Transitive dependency brace-expansion 1.1.11 is introduced via
