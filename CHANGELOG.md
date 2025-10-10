@@ -2,6 +2,18 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.2.0] - 2025-10-10
+
+### TypeScript refactor
+
+- Refactored core TypeScript source to use modern patterns (const/let, async/await), safer child-process calls (execFile), and path utilities (path.extname) for reliable file-type checks.
+- Fixed test harness compatibility (removed deprecated Mocha API usage) so integration tests run on the CI test runner.
+- Updated minimum supported VS Code engine to >= 1.65.0.
+
+### Notes
+
+- These changes improve reliability on Windows and modern Node/TypeScript toolchains and unblock running the extension's tests against recent VS Code releases.
+
 ## [0.1.23]
 
 ### Dependencies

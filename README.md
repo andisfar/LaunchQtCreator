@@ -41,6 +41,12 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
+## 0.2.0 - 2025-10-10
+
+- Refactored TypeScript sources to modern patterns (async/await, const/let), safer process launching (execFile), and reliable file extension checks.
+- Fixed test harness compatibility and removed deprecated Mocha API usage so integration tests run cleanly on CI.
+- Minimum supported Visual Studio Code version updated to >= 1.65.0.
+
 ## 0.1.23
 
 Updated Launch Qt Creator to keep up-to-date with dependabot suggestions on changes in dependency packages:
