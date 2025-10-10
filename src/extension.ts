@@ -17,16 +17,12 @@ import {LaunchQtDesigner, OpenInQtDesigner} from './designer';
 
 var path = require("path");
 
-export function ValidCreatorFiles(file: string): boolean {
-    let return_value: boolean = file.endsWith('.pro') || file.endsWith(".qrc")
-        || path.basename(file) === "CMakeLists.txt" || file.endsWith('ui');
-    return return_value;
-}
+// validation helper lives in creator/designer modules; keep this file focused on activation/commands
 
 export function activate(context: ExtensionContext) {
-    const pj = context.extension.packageJSON
-    let version:string = pj.version
-    window.showInformationMessage("[" + version + "] <Lanch Qt Createor> Activated!")
+    const pj = context.extension.packageJSON;
+    const version: string = pj.version;
+    console.log(`[${version}] Launch Qt Creator extension activated`);
     // command to launch Qt Tool Selection
 	let command:string = 'launchqtcreator.launchqtselection';
     let commandHandler = () =>
@@ -34,111 +30,79 @@ export function activate(context: ExtensionContext) {
         let selections: string[] = ["QtCreator","Qt Designer"];
         window.showQuickPick(selections).then((selection)=>
         {
-            if(selection === 'QtCreator')
-            {
-                window.withProgress(
-                {
-                    location : ProgressLocation.Notification,
-                    title : "Launching QtCreator...",
-                    cancellable: false
-                }, () =>
-                {
-                    var p = new Promise<boolean>(resolve=>
-                    {
-                        setTimeout(() =>
+                if (selection === 'QtCreator') {
+                    window.withProgress(
                         {
-                            resolve(LaunchQtCreator());
-                        }, 5000);
-                    });return p;
-                }).then(success =>
-                {
-                    if(!success)
-                    {
-                        console.log("error calling LaunchQtCreator");
-                        window.showErrorMessage("error calling LaunchQtCreator");
-                    }
-                },rejected_because =>
-                {
-                    console.log("promise rejection from LaunchQtCreator: " + rejected_because);
-                    window.showErrorMessage("promise rejection from LaunchQtCreator: " + rejected_because);
-                });
-            }
-            if(selection === 'Qt Designer')
-            {
+                            location: ProgressLocation.Notification,
+                            title: "Launching QtCreator...",
+                            cancellable: false
+                        }, async () => {
+                            try {
+                                const success = await LaunchQtCreator();
+                                if (!success) {
+                                    console.log("error calling LaunchQtCreator");
+                                    window.showErrorMessage("error calling LaunchQtCreator");
+                                }
+                            } catch (err:any) {
+                                console.error('error launching QtCreator', err);
+                                window.showErrorMessage('error launching QtCreator: ' + String(err));
+                            }
+                        }
+                    );
+                }
+            if (selection === 'Qt Designer') {
                 window.withProgress(
-                {
-                    location : ProgressLocation.Notification,
-                    title : "Launching Qt Designer...",
-                    cancellable: false
-                }, () =>
-                {
-                    var p = new Promise<boolean>(resolve=>
                     {
-                        setTimeout(() =>
-                        {
-                            resolve(LaunchQtDesigner());
-                        }, 2000);
-                    });return p;
-                }).then(success =>
-                {
-                    if(!success)
-                    {
-                        console.log("error calling LaunchQtDesigner");
-                        window.showErrorMessage("error calling LaunchQtDesigner");
+                        location: ProgressLocation.Notification,
+                        title: "Launching Qt Designer...",
+                        cancellable: false
+                    }, async () => {
+                        try {
+                            const success = await LaunchQtDesigner();
+                            if (!success) {
+                                console.log("error calling LaunchQtDesigner");
+                                window.showErrorMessage("error calling LaunchQtDesigner");
+                            }
+                        } catch (err:any) {
+                            console.error('error launching Qt Designer', err);
+                            window.showErrorMessage('error launching Qt Designer: ' + String(err));
+                        }
                     }
-                },rejected_because =>
-                {
-                    console.log("promise rejection from LaunchQtDesigner: " + rejected_because);
-                    window.showErrorMessage("promise rejection from LaunchQtDesigner: " + rejected_because);
-                });
+                );
             }
         });
     };
 	context.subscriptions.push(commands.registerCommand(command, commandHandler));
 
     // command to launch Qt Creator
-	command = 'launchqtcreator.launchqtcreator';
-    commandHandler = () =>
-    {
-        window.withProgress(
-        {
-            location : ProgressLocation.Window,
-            title : "Launching QtCreator...",
-            cancellable: false
-        }, () =>
-        {
-            var p = new Promise<boolean>(resolve=>
+    command = 'launchqtcreator.launchqtcreator';
+    commandHandler = () => {
+        return window.withProgress(
             {
-                setTimeout(() =>
-                {
-                    resolve(LaunchQtCreator());
-                }, 2000);
-            });return p;
-        });
+                location: ProgressLocation.Window,
+                title: "Launching QtCreator...",
+                cancellable: false
+            }, async () => {
+                return await LaunchQtCreator();
+            }
+        );
     };
-	context.subscriptions.push(commands.registerCommand(command, commandHandler));
+    context.subscriptions.push(commands.registerCommand(command, commandHandler));
 
     // command to launch Qt Designer
-	command = 'launchqtcreator.launchqtdesigner';
-    commandHandler = () =>
-    {
-        window.withProgress(
-        {
-            location : ProgressLocation.Window,
-            title : "Launching Qt Designer...",
-            cancellable: false
-        }, () =>
-        {
-            var p = new Promise<boolean>(resolve=>
+    command = 'launchqtcreator.launchqtdesigner';
+    commandHandler = () => {
+        return window.withProgress(
             {
-                setTimeout(() =>
-                {
-                    resolve(LaunchQtDesigner());
-                }, 2000);
-            });return p;
-        });
+                location: ProgressLocation.Window,
+                title: "Launching Qt Designer...",
+                cancellable: false
+            }, async () => {
+                return await LaunchQtDesigner();
+            }
+        );
     };
-	context.subscriptions.push(commands.registerCommand(command, commandHandler));
+    context.subscriptions.push(commands.registerCommand(command, commandHandler));
 
     // command to open a file in QtCreator:
     // can be QtCreator project files (*.pro),
@@ -161,19 +125,11 @@ export function activate(context: ExtensionContext) {
         }
         return window.withProgress(
             {
-                location : ProgressLocation.Notification,
-                title : "Opening " + path.basename(qtFile.fsPath) + " in QtCreator ...",
+                location: ProgressLocation.Notification,
+                title: "Opening " + path.basename(qtFile.fsPath) + " in QtCreator ...",
                 cancellable: false
-            },
-            () =>
-            {
-                return new Promise<boolean>(resolve=>
-                {
-                    setTimeout(() =>
-                    {
-                        resolve(OpenInQtCreator(qtFile));
-                    }, 5000);
-                });
+            }, async () => {
+                return await OpenInQtCreator(qtFile);
             }
         );
     };
@@ -181,9 +137,9 @@ export function activate(context: ExtensionContext) {
 
  // command to open a file in Qt Designer:
 // QtCreator Form files (*.ui)
-command = 'launchqtcreator.openinqtdesigner';
-commandInHandler = (qtFile: Uri) => 
-{
+    command = 'launchqtcreator.openinqtdesigner';
+    commandInHandler = (qtFile: Uri) => 
+    {
     if (!qtFile) 
     {
         if (window.activeTextEditor) 
@@ -195,39 +151,32 @@ commandInHandler = (qtFile: Uri) =>
         }
     }
     return window.withProgress(
-    {
-        location: ProgressLocation.Notification,
-        title: "Opening " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
-        cancellable: false
-    },
-    () => 
         {
-        return new Promise<boolean>(resolve => 
-            {
-                setTimeout(() => 
-                    {
-                        resolve(OpenInQtDesigner(qtFile));
-                    }, 2000);
-            });
+            location: ProgressLocation.Notification,
+            title: "Opening " + path.basename(qtFile.fsPath) + " in Qt Designer ...",
+            cancellable: false
+        }, async () => {
+            return await OpenInQtDesigner(qtFile);
         }
     );
 };
 context.subscriptions.push(commands.registerCommand(command, commandInHandler));
     // Create a statusbar item
-    MakeLaunchQtSelectionStatusbarItem();
+    MakeLaunchQtSelectionStatusbarItem(context);
 }
 
-function MakeLaunchQtSelectionStatusbarItem() : any {
+function MakeLaunchQtSelectionStatusbarItem(context: ExtensionContext) : any {
     try {
-        let item = window.createStatusBarItem(StatusBarAlignment.Right, undefined);
+        const item = window.createStatusBarItem(StatusBarAlignment.Right, undefined);
         item.text = "Launch Qt...";
         item.command = "launchqtcreator.launchqtselection";
         item.show();
-        console.log('created statusbar item \"Qt Tool Selection\"');
+        context.subscriptions.push(item);
+        console.log('created statusbar item "Qt Tool Selection"');
     }
     catch (error: any) {
-        console.log('failed to create statusbar item \"Qt Tool Selection\"');
-        window.showErrorMessage(error);
+        console.log('failed to create statusbar item "Qt Tool Selection"');
+        window.showErrorMessage(String(error));
     }
 }
 

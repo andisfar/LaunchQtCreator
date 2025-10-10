@@ -1,101 +1,52 @@
-import
-{ Uri,
-  window,
-  workspace,
-  ConfigurationTarget,
-  WorkspaceConfiguration
-} from 'vscode';
+import { Uri, window, workspace, ConfigurationTarget, WorkspaceConfiguration } from 'vscode';
 import { file_extension } from './common';
-
-var   cp = require('child_process');
+import { execFile } from 'child_process';
+import * as path from 'path';
 
 async function ValidDesignerFiles(file: string): Promise<boolean> {
-    let return_value: boolean = file.endsWith('ui');
-    if(!return_value)
-    {
-        window.showErrorMessage("opening " + file_extension(file) + " not allowed!");
+    const ext = path.extname(file).toLowerCase();
+    const return_value: boolean = ext === '.ui';
+    if (!return_value) {
+        window.showErrorMessage(`opening ${file_extension(file)} not allowed!`);
     }
     return return_value;
 }
 
 export async function LaunchQtDesigner() : Promise<boolean> {
     let return_value:boolean = true;
-    let config = workspace.getConfiguration('launchqtcreator');
-    let qtdesigner:string = config.qtDesignerPath;
-    if(qtdesigner === "<qt-designer-path>" || qtdesigner === "")
-    {
-        await getQtDesignerPath().then(async path =>
-        {
-            qtdesigner = path;
-            console.log('successfully called getQtDesignerPath: result [' + qtdesigner + ']');
-            await doLaunchQtDesigner(qtdesigner).then(()=>{
-                console.log('called doLaunchQtDesigner with path ' + qtdesigner);
-                return_value = true;
-            }).then(undefined, ()=>{
-                return_value = false;
-            });
-        }).then(undefined, () =>{
-            return_value = false;
-        });
+    const config = workspace.getConfiguration('launchqtcreator');
+    let qtdesigner: string = config.qtDesignerPath;
+    try {
+        if (qtdesigner === "<qt-designer-path>" || qtdesigner === "") {
+            qtdesigner = await getQtDesignerPath();
+            console.log(`successfully called getQtDesignerPath: result [${qtdesigner}]`);
+        }
+        await doLaunchQtDesigner(qtdesigner);
+        console.log('called doLaunchQtDesigner with path ' + qtdesigner);
+        return true;
+    } catch (e) {
+        console.error(e);
+        return false;
     }
-    else
-    {
-        await doLaunchQtDesigner(qtdesigner).then(()=>{
-            console.log('called doLaunchQtDesigner with path ' + qtdesigner);
-            return_value = true;
-        }).then(undefined, ()=>{
-            return_value = false;
-        });
-    }
-	return return_value;
 }
 
-export async function OpenInQtDesigner(qtFile: Uri): Promise<boolean>
-{
-    let return_value: boolean = false;
-    ValidDesignerFiles(qtFile.fsPath).then(valid_file =>
-    {
-        if (valid_file)
-        {
-            let config = workspace.getConfiguration('launchqtcreator');
-            let qtdesigner: string = config.qtDesignerPath;
-            if (qtdesigner === "<qt-designer-path>" || qtdesigner === "")
-            {
-                getQtDesignerPath().then(async (path) =>
-		{
-                    qtdesigner = path;
-                    console.log('successfully called getQtDesignerPath: result [' + qtdesigner + ']');
-                    await doOpenInQtDesigner({ qtdesigner, qtfile: qtFile }).then(() =>
-		    {
-                        console.log('called doLaunchInQtDesigner with path ' +
-                            qtdesigner +
-                            " " + qtFile.fsPath);
-                        return_value = true;
-                    }).then(undefined, () =>
-		    {
-                        return_value = false;
-                    });
-                }).then(undefined, () =>
-		{
-                    return_value = false;
-                });
-            }
-            else
-            {
-                doOpenInQtDesigner({ qtdesigner, qtfile: qtFile }).then(() =>
-		{
-                    console.log('called doLaunchInQtDesigner with path ' +
-                        qtdesigner +
-                        " " + qtFile.fsPath);
-                    return_value = true;
-                }).then(undefined, () =>
-		{
-                    return_value = false;
-                });
-            }
+export async function OpenInQtDesigner(qtFile: Uri): Promise<boolean> {
+    try {
+        const valid = await ValidDesignerFiles(qtFile.fsPath);
+        if (!valid) return false;
+        const config = workspace.getConfiguration('launchqtcreator');
+        let qtdesigner: string = config.qtDesignerPath;
+        if (qtdesigner === "<qt-designer-path>" || qtdesigner === "") {
+            qtdesigner = await getQtDesignerPath();
+            console.log(`successfully called getQtDesignerPath: result [${qtdesigner}]`);
         }
-    });
-    return return_value;
+        await doOpenInQtDesigner({ qtdesigner, qtfile: qtFile });
+        console.log('called doLaunchInQtDesigner with path ' + qtdesigner + ' ' + qtFile.fsPath);
+        return true;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
 }
 
 export async function getQtDesignerPath() : Promise<string> {
@@ -110,41 +61,43 @@ export async function getQtDesignerPath() : Promise<string> {
 		return "";
 	}
 	let designerPath = pathUri[0].fsPath;
-	const settings:WorkspaceConfiguration = workspace.getConfiguration('launchqtcreator');
-	settings.update('qtDesignerPath', designerPath, ConfigurationTarget.Global).then(
-        undefined, err =>
-	{
-		window.showErrorMessage('unable to set \"launchqtcreator.qtDesignerPath\"\n(' + err + ")");
-	});
-	return designerPath;
+    const settings: WorkspaceConfiguration = workspace.getConfiguration('launchqtcreator');
+    try {
+        await settings.update('qtDesignerPath', designerPath, ConfigurationTarget.Global);
+    } catch (err: any) {
+        window.showErrorMessage('unable to set \"launchqtcreator.qtDesignerPath\"\n(' + err + ")");
+    }
+    return designerPath;
 }
 
 export async function doLaunchQtDesigner(qtdesigner: string)
 {
-	await cp.exec(qtdesigner, (err: string, stdout: string) =>
-	{
-		if (err)
-		{
-		    console.log('error: ' + err);
-		}
-		if (stdout)
-		{
-		    console.log('stdout: ' + stdout);
-        	}
-	});
+    return new Promise<void>((resolve, reject) => {
+        execFile(qtdesigner, [], (err, stdout, stderr) => {
+            if (err) {
+                console.error('error: ' + err);
+                reject(err);
+                return;
+            }
+            if (stdout) console.log('stdout: ' + stdout);
+            if (stderr) console.error('stderr: ' + stderr);
+            resolve();
+        });
+    });
 }
 
 export async function doOpenInQtDesigner({ qtdesigner, qtfile }: { qtdesigner: string; qtfile: Uri; })
 {
-    await cp.exec(`${qtdesigner}  "${qtfile.fsPath}"`, (err: string, stdout: string) =>
-    {
-	if (err)
-	{
-	    console.log('error: ' + err);
-	}
-	if (stdout)
-	{
-	    console.log('stdout: ' + stdout);
-       	}
+    return new Promise<void>((resolve, reject) => {
+        execFile(qtdesigner, [qtfile.fsPath], (err, stdout, stderr) => {
+            if (err) {
+                console.error('error: ' + err);
+                reject(err);
+                return;
+            }
+            if (stdout) console.log('stdout: ' + stdout);
+            if (stderr) console.error('stderr: ' + stderr);
+            resolve();
+        });
     });
 }
