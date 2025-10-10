@@ -2,6 +2,18 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.2.0] - 2025-10-10
+
+### TypeScript refactor
+
+- Refactored core TypeScript source to use modern patterns (const/let, async/await), safer child-process calls (execFile), and path utilities (path.extname) for reliable file-type checks.
+- Fixed test harness compatibility (removed deprecated Mocha API usage) so integration tests run on the CI test runner.
+- Updated minimum supported VS Code engine to >= 1.65.0.
+
+### Notes
+
+- These changes improve reliability on Windows and modern Node/TypeScript toolchains and unblock running the extension's tests against recent VS Code releases.
+
 ## [0.1.23]
 
 ### Dependencies
@@ -20,7 +32,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
 ## [0.1.22]
 
-### Bumps the npm_and_yarn group with 1 update in the / directory: tmp.
+### Bumps the npm_and_yarn group with 1 update in the / directory: tmp
 
 Updates tmp from 0.2.1 to 0.2.5
 
@@ -45,7 +57,7 @@ Committers: 5
 - Maxime Bargiel (@​mbargiel)
 - @​robertoaceves
 
-### Bumps the npm_and_yarn group with 1 update in the / directory: form-data.
+### Bumps the npm_and_yarn group with 1 update in the / directory: form-data
 
 Updates form-data from 4.0.1 to 4.0.4
 

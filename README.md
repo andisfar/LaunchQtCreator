@@ -41,6 +41,12 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
+## 0.2.0 - 2025-10-10
+
+- Refactored TypeScript sources to modern patterns (async/await, const/let), safer process launching (execFile), and reliable file extension checks.
+- Fixed test harness compatibility and removed deprecated Mocha API usage so integration tests run cleanly on CI.
+- Minimum supported Visual Studio Code version updated to >= 1.65.0.
+
 ## 0.1.23
 
 Updated Launch Qt Creator to keep up-to-date with dependabot suggestions on changes in dependency packages:
@@ -61,7 +67,7 @@ Updated Launch Qt Creator to keep up-to-date with dependabot suggestions on chan
 
 ## 0.1.22
 
-### Bumps the npm_and_yarn group with 1 update in the / directory: tmp.
+### Bumps the npm_and_yarn group with 1 update in the / directory: tmp
 
 Updates tmp from 0.2.1 to 0.2.5
 
@@ -86,7 +92,7 @@ Committers: 5
 - Maxime Bargiel (@​mbargiel)
 - @​robertoaceves
 
-### Bumps the npm_and_yarn group with 1 update in the / directory: form-data.
+### Bumps the npm_and_yarn group with 1 update in the / directory: form-data
 
 Updates form-data from 4.0.1 to 4.0.4
 

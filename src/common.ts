@@ -1,7 +1,6 @@
-var path = require("path");
+import * as path from 'path';
+
 export function file_extension(file: string): string {
-    let basepath: string = path.basename(file);
-    let basepathArray: string[] = basepath.split('.');
-    basepath = "'*." + basepathArray[basepathArray.length - 1] + "'";
-    return basepath;
+    // return the file extension in lower-case including the dot (e.g. ".ui")
+    return path.extname(file).toLowerCase();
 }
