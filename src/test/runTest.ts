@@ -4,8 +4,7 @@ import * as fs from 'fs';
 
 // Instantiate a Mocha instance.
 const mocha = new Mocha({
-    ui: 'bdd',
-    color: true
+    ui: 'bdd'
 });
 
 const testDir = path.resolve(__dirname);
