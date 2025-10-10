@@ -32,7 +32,7 @@ All notable changes to the "launchqtcreator" extension will be documented in thi
 
 ## [0.1.22]
 
-### Bumps the npm_and_yarn group with 1 update in the / directory: tmp.
+### Bumps the npm_and_yarn group with 1 update in the / directory: tmp
 
 Updates tmp from 0.2.1 to 0.2.5
 
@@ -57,7 +57,7 @@ Committers: 5
 - Maxime Bargiel (@​mbargiel)
 - @​robertoaceves
 
-### Bumps the npm_and_yarn group with 1 update in the / directory: form-data.
+### Bumps the npm_and_yarn group with 1 update in the / directory: form-data
 
 Updates form-data from 4.0.1 to 4.0.4
 
