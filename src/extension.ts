@@ -20,9 +20,10 @@ var path = require("path");
 // validation helper lives in creator/designer modules; keep this file focused on activation/commands
 
 export function activate(context: ExtensionContext) {
-    const pj = context.extension.packageJSON;
-    const version: string = pj.version;
-    console.log(`[${version}] Launch Qt Creator extension activated`);
+    try {
+        const pj = context.extension.packageJSON;
+        const version: string = pj.version;
+        console.log(`[${version}] Launch Qt Creator extension activated`);
     // command to launch Qt Tool Selection
 	let command:string = 'launchqtcreator.launchqtselection';
     let commandHandler = () =>
@@ -163,6 +164,11 @@ export function activate(context: ExtensionContext) {
 context.subscriptions.push(commands.registerCommand(command, commandInHandler));
     // Create a statusbar item
     MakeLaunchQtSelectionStatusbarItem(context);
+    } catch (err:any) {
+        console.error('Extension activation failed', err);
+        // rethrow so the extension host records the activation failure
+        throw err;
+    }
 }
 
 function MakeLaunchQtSelectionStatusbarItem(context: ExtensionContext) : any {
