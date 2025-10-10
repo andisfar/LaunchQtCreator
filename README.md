@@ -41,6 +41,24 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
+## 0.1.23
+
+Updated Launch Qt Creator to keep up-to-date with dependabot suggestions on changes in dependency packages:
+
+### Dependencies
+
+- Bump tar-fs from 2.1.3 to 2.1.4 in the npm_and_yarn group across 1 directory (#37)
+
+- Bumps the npm_and_yarn group with 1 update in the / directory: tar-fs.
+
+- Updates tar-fs from 2.1.3 to 2.1.4
+
+#### Commits
+
+- f421a23 2.1.4
+- c412fa1 refactor to same pattern as v3
+- See full diff in [compare view](https://github.com/mafintosh/tar-fs/compare/v2.1.3...v2.1.4)
+
 ## 0.1.22
 
 ### Bumps the npm_and_yarn group with 1 update in the / directory: tmp.
