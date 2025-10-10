@@ -7,7 +7,6 @@ export function run(): Promise<void> {
 	const mocha = new Mocha({
 		ui: 'tdd',
 	});
-	mocha.useColors(true);
 
 	const testsRoot = path.resolve(__dirname, '..');
 
@@ -16,6 +15,7 @@ export function run(): Promise<void> {
 			if (err) {
 				return e(err);
 			}
+			console.log('discovered test files:', files);
 
 			// Add files to the test suite
 			files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
@@ -23,6 +23,7 @@ export function run(): Promise<void> {
 			try {
 				// Run the mocha test
 				mocha.run(failures => {
+					console.log('mocha run finished, failures =', failures);
 					if (failures > 0) {
 						e(new Error(`${failures} tests failed.`));
 					} else {
@@ -30,6 +31,7 @@ export function run(): Promise<void> {
 					}
 				});
 			} catch (err) {
+				console.error('mocha run threw', err);
 				e(err);
 			}
 		});
