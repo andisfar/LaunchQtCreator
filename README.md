@@ -41,6 +41,39 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
+## 0.2.1 - 2025
+
+### FROM Dependbot:
+
+[#40](https://github.com/andisfar/LaunchQtCreator/security/dependabot/40)
+
+js-yaml has prototype pollution in merge (<<) #40
+ Open Opened yesterday on js-yaml (npm) · yarn.lock
+Dependabot cannot update to the required version
+One or more other dependencies require a version that is incompatible with this update.
+
+Transitive dependency js-yaml 4.1.0 is introduced via mocha 10.8.2 → js-yaml 4.1.0
+
+| Package | Affected versions | Patched version |
+|---------|-------------------|-----------------|
+| js-yaml (npm) | < 4.1.1 | 4.1.1 |
+
+### Impact
+
+In js-yaml 4.1.0 and below, it's possible for an attacker to modify the prototype of the result of a parsed yaml document via prototype pollution (__proto__). All users who parse untrusted yaml documents may be impacted.
+
+### Patches
+
+Problem is patched in js-yaml 4.1.1.
+
+### Workarounds
+
+You can protect against this kind of attack on the server by using node --disable-proto=delete or deno (in Deno, pollution protection is on by default).
+
+References
+[Prototype_Pollution_Prevention_Cheat_Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Prototype_Pollution_Prevention_Cheat_Sheet.html)
+
+
 ## 0.2.0 - 2025-10-10
 
 - Refactored TypeScript sources to modern patterns (async/await, const/let), safer process launching (execFile), and reliable file extension checks.
