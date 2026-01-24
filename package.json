@@ -1,148 +1,148 @@
 {
-	"name": "launchqtcreator",
-	"displayName": "Launch Qt Creator",
-	"description": "Launch Qt Creator",
-	"icon": "resources/qt.png",
-	"version": "0.2.1",
-	"license": "MIT",
-	"publisher": "OralShaneCurtis-6510",
-	"author": {
-		"name": "Oral Shane Curtis (AngryDane)",
-		"email": "andisfar@hotmail.com",
-		"url": "https://github.com/andisfar/"
-	},
-	"repository": {
-		"url": "https://github.com/andisfar/LaunchQtCreator"
-	},
-	"engines": {
-		"vscode": ">=1.65.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"workspaceContains:*.pro",
-		"workspaceContains:CMakeLists.txt",
-		"workspaceContains:*.ui"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commandPallet": [
-			{
-				"command": "launchqtcreator.openinqtcreator",
-				"when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
-			},
-			{
-				"command": "launchqtcreator.openinqtdesigner",
-				"when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
-			}
-		],
-		"menus": {
-			"explorer/context": [
-				{
-					"command": "launchqtcreator.openinqtcreator",
-					"group": "navigation"
-				},
-				{
-					"command": "launchqtcreator.openinqtdesigner",
-					"group": "navigation"
-				}
-			],
-			"editor/title/context": [
-				{
-					"command": "launchqtcreator.openinqtcreator",
-					"group": "0"
-				},
-				{
-					"command": "launchqtcreator.openinqtdesigner",
-					"group": "0"
-				}
-			],
-			"editor/context": [
-				{
-					"command": "launchqtcreator.openinqtcreator",
-					"group": "0"
-				},
-				{
-					"command": "launchqtcreator.openinqtdesigner",
-					"group": "0"
-				}
-			]
-		},
-		"commands": [
-			{
-				"command": "launchqtcreator.launchqtselection",
-				"title": "Launch Qt Tool Selection"
-			},
-			{
-				"command": "launchqtcreator.launchqtcreator",
-				"title": "Launch Qt Creator"
-			},
-			{
-				"command": "launchqtcreator.launchqtdesigner",
-				"title": "Launch Qt Designer"
-			},
-			{
-				"command": "launchqtcreator.openinqtcreator",
-				"title": "Open in Qt Creator",
-				"icon": {
-					"light": "resources/qt.ico",
-					"dark": "resources/qt.ico"
-				}
-			},
-			{
-				"command": "launchqtcreator.openinqtdesigner",
-				"title": "Open in Qt Designer",
-				"icon": {
-					"light": "resources/qt.ico",
-					"dark": "resources/qt.ico"
-				}
-			}
-		],
-		"configuration": [
-			{
-				"title": "launchqtcreator",
-				"properties": {
-					"launchqtcreator.qtCreatorPath": {
-						"type": "string",
-						"scope": "resource",
-						"default": "<qt-creator-path>",
-						"description": "Enter the path of QtCreator for this machine"
-					},
-					"launchqtcreator.qtDesignerPath": {
-						"type": "string",
-						"scope": "resource",
-						"default": "<qt-designer-path>",
-						"description": "Enter the path of Qt Designer for this machine"
-					}
-				}
-			}
-		]
-	},
-	"scripts": {
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.4",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.17.60",
-		"@types/vscode": "1.65.0",
-		"glob": "^7.2.0",
-		"mocha": "^10.1.0",
-		"tslint": "^5.8.0",
-		"typescript": "^5.9.3",
-		"vscode-test": "^1.6.1"
-	},
-	"dependencies": {
-		"@vscode/vsce": "^2.32.0",
-		"ansi-regex": "^5.0.1",
-		"es6": "0.0.7",
-		"eslint": "^9.39.1"
-	},
-	"overrides": {
-		"whatwg-encoding": "npm:@exodus/bytes"
-	}
+  "name": "launchqtcreator",
+  "displayName": "Launch Qt Creator",
+  "description": "Launch Qt Creator",
+  "icon": "resources/qt.png",
+  "version": "0.2.3",
+  "license": "MIT",
+  "publisher": "OralShaneCurtis-6510",
+  "author": {
+    "name": "Oral Shane Curtis (AngryDane)",
+    "email": "andisfar@hotmail.com",
+    "url": "https://github.com/andisfar/"
+  },
+  "repository": {
+    "url": "https://github.com/andisfar/LaunchQtCreator"
+  },
+  "engines": {
+    "vscode": ">=1.65.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:*.pro",
+    "workspaceContains:CMakeLists.txt",
+    "workspaceContains:*.ui"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commandPallet": [
+      {
+        "command": "launchqtcreator.openinqtcreator",
+        "when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
+      },
+      {
+        "command": "launchqtcreator.openinqtdesigner",
+        "when": "editorTextFocus && !editorReadOnly && !inCompositEditor"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "launchqtcreator.openinqtcreator",
+          "group": "navigation"
+        },
+        {
+          "command": "launchqtcreator.openinqtdesigner",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "launchqtcreator.openinqtcreator",
+          "group": "0"
+        },
+        {
+          "command": "launchqtcreator.openinqtdesigner",
+          "group": "0"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "launchqtcreator.openinqtcreator",
+          "group": "0"
+        },
+        {
+          "command": "launchqtcreator.openinqtdesigner",
+          "group": "0"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "launchqtcreator.launchqtselection",
+        "title": "Launch Qt Tool Selection"
+      },
+      {
+        "command": "launchqtcreator.launchqtcreator",
+        "title": "Launch Qt Creator"
+      },
+      {
+        "command": "launchqtcreator.launchqtdesigner",
+        "title": "Launch Qt Designer"
+      },
+      {
+        "command": "launchqtcreator.openinqtcreator",
+        "title": "Open in Qt Creator",
+        "icon": {
+          "light": "resources/qt.ico",
+          "dark": "resources/qt.ico"
+        }
+      },
+      {
+        "command": "launchqtcreator.openinqtdesigner",
+        "title": "Open in Qt Designer",
+        "icon": {
+          "light": "resources/qt.ico",
+          "dark": "resources/qt.ico"
+        }
+      }
+    ],
+    "configuration": [
+      {
+        "title": "launchqtcreator",
+        "properties": {
+          "launchqtcreator.qtCreatorPath": {
+            "type": "string",
+            "scope": "resource",
+            "default": "<qt-creator-path>",
+            "description": "Enter the path of QtCreator for this machine"
+          },
+          "launchqtcreator.qtDesignerPath": {
+            "type": "string",
+            "scope": "resource",
+            "default": "<qt-designer-path>",
+            "description": "Enter the path of Qt Designer for this machine"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.17.60",
+    "@types/vscode": "1.65.0",
+    "glob": "^7.2.0",
+    "mocha": "^10.1.0",
+    "tslint": "^5.8.0",
+    "typescript": "^5.9.3",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^2.32.0",
+    "ansi-regex": "^5.0.1",
+    "es6": "0.0.7",
+    "eslint": "^9.39.1"
+  },
+  "overrides": {
+    "whatwg-encoding": "npm:@exodus/bytes"
+  }
 }
