@@ -141,5 +141,8 @@
 		"ansi-regex": "^5.0.1",
 		"es6": "0.0.7",
 		"eslint": "^9.39.1"
+	},
+	"resolutions": {
+		"whatwg-encoding": "npm:@exodus/bytes"
 	}
 }
