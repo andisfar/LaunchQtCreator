@@ -2,6 +2,15 @@
 
 All notable changes to the "launchqtcreator" extension will be documented in this file.
 
+## [0.2.3] - 2026
+
+- oops - forgot to commit changes and update the readme and change log.
+
+## [0.2.2] - 2026
+
+- various security updates from dependabot
+- yarn dependency removed, uses only npm now.
+
 ## [0.2.1] - 2025
 
 ### FROM Dependbot:
