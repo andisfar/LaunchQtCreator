@@ -41,6 +41,15 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
+## 0.2.3 - 2026
+
+- oops - forgot to commit changes and update the readme and change log.
+
+## 0.2.2 - 2026
+
+- various security updates from dependabot
+- yarn dependency removed, uses only npm now.
+
 ## 0.2.1 - 2025
 
 ### FROM Dependbot:
