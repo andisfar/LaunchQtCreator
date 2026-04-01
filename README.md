@@ -41,7 +41,7 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
 ## Release Notes
 
-## 0.2.3 - 2026
+## 0.2.4 - 2026-04
 
 ### Dependencies
 
@@ -49,11 +49,15 @@ QtCreator is very useful for certain tasks! When working on Qt projects, there a
 
   Sourced from [qs's changelog](https://github.com/ljharb/qs/blob/main/CHANGELOG.md):
 
-  - [Fix] `parse`: mark overflow objects for indexed notation exceeding `arrayLimit`
+  - [Fix] `parse`: mark overflow objects for indexed notation exceeding `arrayLimit` ([#546](https://redirect.github.com/ljharb/qs/issues/546))
   - [Fix] `arrayLimit` means max count, not max index, in `combine`/`merge`/`parseArrayValue`
-  - [Fix] `parse`: throw on `arrayLimit` exceeded with indexed notation when `throwOnLimitExceeded` is true
+  - [Fix] `parse`: throw on `arrayLimit` exceeded with indexed notation when `throwOnLimitExceeded` is true ([#529](https://redirect.github.com/ljharb/qs/issues/529))
   - [Fix] `parse`: enforce `arrayLimit` on `comma`-parsed values
-  - [Fix] `parse`: fix error message to reflect arrayLimit as max index
+  - [Fix] `parse`: fix error message to reflect arrayLimit as max index ([#545](https://redirect.github.com/ljharb/qs/issues/545))
+  
+## 0.2.3 - 2026
+  
+- oops - forgot to commit changes and update the readme and change log.
 
 ## 0.2.2 - 2026
 
